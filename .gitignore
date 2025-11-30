@@ -1,0 +1,8 @@
+[200~__pycache__/
+*.pyc
+venv/
+mon_env/
+.env
+.ipynb_checkpoints
+data/raw/*.csv
+*.pkl
