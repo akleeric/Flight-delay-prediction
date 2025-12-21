@@ -1,8 +1,55 @@
-[200~__pycache__/
-*.pyc
-venv/
+# Environnement virtuel
 mon_env/
+venv/
+env/
+.venv/
+
+# Fichiers de credentials (CRITIQUE)
 .env
+.env.*
+*.env
+!.env.example
+
+credentials.json
+config.ini
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*$py.class
+*.so
+.Python
+
+# Jupyter Notebook
 .ipynb_checkpoints
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Data files
 data/raw/*.csv
+data/processed/*.csv
+*.db
+*.sqlite
+
+# Models
 *.pkl
+*.joblib
+
+# MongoDB
+*.bson
+
+# Snowflake
+*.session
