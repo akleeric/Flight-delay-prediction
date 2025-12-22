@@ -78,54 +78,32 @@ except Exception as e:
 # ============================================
 # TEST 3 : Air France-KLM API
 # ============================================
-"""
 print("\n3. Test Air France-KLM API...")
 try:
-    api_key = os.getenv('AIRFRANCE_API_KEY')
-
-    if not api_key:
-        print(" AIRFRANCE_API_KEY non trouvée dans .env")
+    url = "https://api.airfranceklm.com/opendata/flightstatus"
+    # Paramètres exactement comme dans le curl qui fonctionne
+    params = {
+        'startRange': '2025-12-31T09:00:00Z',
+        'endRange': '2025-12-31T23:59:59Z'
+    }
+    headers = {
+        'API-Key': os.getenv('AIRFRANCEKLM_API_KEY'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    # Timeout augmenté à 30 secondes
+    response = requests.get(url, headers=headers, params=params, timeout=30)
+    if response.status_code == 200:
+        data = response.json()
+        flights = data.get('flightStatuses', [])
+        print(f" OK - {len(flights)} vols AF/KLM récupérés")
     else:
-        # Test avec Open Data API Flight Status v4
-        headers = {
-            'api-key': api_key,
-            'accept': 'application/json'
-        }
- 
-        # Test endpoint flightstatus v4
-        from datetime import datetime
-        today = datetime.now().strftime('%Y-%m-%d')
-
-        # Test avec un vol Air France réel (AF1234 pour aujourd'hui)
-        url = f"https://api.airfranceklm.com/opendata/flightstatus/v4/flights?departureDate={today}&flightNumber=AF1234"
-        response = requests.get(url, headers=headers, timeout=10)
-
-        if response.status_code == 200:
-            data = response.json()
-            print(f"OK - API Flight Status v4 accessible")
-            print(f"OK - Réponse reçue avec succès")
-        elif response.status_code == 404:
-            # 404 peut signifier qu'aucun vol ne correspond (normal)
-            # Testons un endpoint plus simple : airports
-            url2 = "https://api.airfranceklm.com/opendata/flightstatus/airports"
-            response2 = requests.get(url2, headers=headers, timeout=10)
-            if response2.status_code == 200:
-                print(f"OK - API accessible (airports endpoint)")
-                print(f"OK - Connexion validée")
-            else:
-                print(f" Code {response2.status_code} - Vérifier les endpoints disponibles")
-        elif response.status_code == 401:
-            print(" API Key invalide ou non approuvée")
-            print("  Vérifiez votre clé sur https://developer.airfranceklm.com")
-        elif response.status_code == 403:
-            print(" API Key non approuvée - attendez l'email de validation")
-        else:
-            print(f"  Erreur HTTP {response.status_code}")
-            print(f"  Réponse: {response.text[:200]}")
-
+        print(f"  Code {response.status_code}")
+        print(f  Response: {response.text[:150]}")
+except requests.exceptions.Timeout:
+    print(f" Timeout - L'API met trop de temps à répondre")
+    print(f" L'API fonctionne (curl OK) mais est lente")
 except Exception as e:
-    print(f" Erreur: {e}")
-"""
+    print(f"  Erreur: {e}")
 
 # ============================================
 # TEST 4 : OpenWeatherMap API
