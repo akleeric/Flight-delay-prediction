@@ -1,0 +1,7 @@
+requests==2.31.0
+python-dotenv==1.0.0
+pymongo==4.6.1
+psycopg2-binary==2.9.9
+snowflake-connector-python==3.6.0
+pandas==2.1.4
+numpy==1.26.3
