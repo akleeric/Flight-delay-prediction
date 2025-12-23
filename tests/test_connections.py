@@ -98,7 +98,7 @@ try:
         print(f" OK - {len(flights)} vols AF/KLM récupérés")
     else:
         print(f"  Code {response.status_code}")
-        print(f  Response: {response.text[:150]}")
+        print(f"  Response: {response.text[:150]}")
 except requests.exceptions.Timeout:
     print(f" Timeout - L'API met trop de temps à répondre")
     print(f" L'API fonctionne (curl OK) mais est lente")
