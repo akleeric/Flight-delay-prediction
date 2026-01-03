@@ -126,7 +126,7 @@ class ProductionFlightCollector:
 
     def collect_weather(self, cities=['Paris', 'Amsterdam', 'London', 'New York']):
         """Collecter données météo"""
-        logger.info("Collecte Météo..."
+        logger.info("Collecte Météo...")
         collection = self.db['weather_data']
         saved = 0
         for city in cities:

@@ -1,4 +1,4 @@
-"""
-Module de collecte de données
-"""
-__version__ = "0.1.0"
+from .aviation_collector import AviationStackCollector
+from .models import *
+
+__all__ = ['AviationStackCollector']
