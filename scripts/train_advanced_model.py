@@ -30,26 +30,40 @@ df['season_encoded'] = le_season.fit_transform(df['season'])
 df['time_of_day_encoded'] = le_time_of_day.fit_transform(df['time_of_day'])
 
 features = [
-    'scheduled_hour', 'day_of_week', 'month', 'is_weekend', 
+    'scheduled_hour', 'day_of_week', 'month', 'is_weekend',
     'is_holiday', 'season_encoded', 'time_of_day_encoded',
-    'dep_temperature', 'dep_wind_speed', 'dep_visibility', 
+    'dep_temperature', 'dep_wind_speed', 'dep_visibility',
     'dep_precipitation', 'dep_weather_bad',
-    'arr_temperature', 'arr_wind_speed', 'arr_visibility', 
+    'arr_temperature', 'arr_wind_speed', 'arr_visibility',
     'arr_precipitation', 'arr_weather_bad',
-    'flight_distance_km', 'scheduled_duration_min', 
+    'flight_distance_km', 'scheduled_duration_min',
     'airline_encoded', 'dep_encoded', 'arr_encoded',
-    'airline_avg_delay', 'route_avg_delay', 
+    'airline_avg_delay', 'route_avg_delay',
     'airport_congestion', 'prev_flight_delay'
 ]
 
 missing_features = [f for f in features if f not in df.columns]
 if missing_features:
-    print(f"  ⚠️  Features manquantes: {missing_features}")
+    print(f"  Features manquantes: {missing_features}")
     features = [f for f in features if f in df.columns]
 
 print(f"  ✓ {len(features)} features sélectionnées")
 
-df_clean = df[features + ['is_delayed']].dropna()
+
+# Remplir NaN avec valeurs par défaut au lieu de supprimer
+df_clean = df[features + ['is_delayed']].copy()
+df_clean = df_clean.fillna({
+    'airline_avg_delay': 0.0,
+    'route_avg_delay': 0.0,
+    'airport_congestion': 0.5,
+    'prev_flight_delay': 0,
+    'flight_distance_km': df_clean['flight_distance_km'].median(),
+    'scheduled_duration_min': df_clean['scheduled_duration_min'].median()
+})
+# Supprimer lignes avec NaN restants (si présents)
+df_clean = df_clean.dropna()
+
+
 print(f"  ✓ {len(df_clean)} vols après suppression NaN")
 
 X = df_clean[features]
@@ -95,7 +109,12 @@ print(f"  ✓ CV Accuracy: {cv_scores.mean():.4f} (±{cv_scores.std():.4f})")
 
 print("\n[6/7] Évaluation sur test set...")
 y_pred = model.predict(X_test)
-y_pred_proba = model.predict_proba(X_test)[:, 1]
+
+# Gérer le cas où il n'y a qu'une seule classe
+if model.predict_proba(X_test).shape[1] > 1:
+    y_pred_proba = model.predict_proba(X_test)[:, 1]
+else:
+    y_pred_proba = model.predict_proba(X_test)[:, 0]
 
 print("\n" + "="*70)
 print("RÉSULTATS")
@@ -115,9 +134,13 @@ print(f"  - False Positives (FP): {fp}")
 print(f"  - False Negatives (FN): {fn}")
 print(f"  - True Positives (TP): {tp}")
 
-if len(np.unique(y_test)) > 1:
+
+if len(np.unique(y_test)) > 1 and model.predict_proba(X_test).shape[1] > 1:
     auc_score = roc_auc_score(y_test, y_pred_proba)
-    print(f"\nAUC-ROC Score: {auc_score:.4f}")
+    print(f"\n AUC-ROC Score: {auc_score:.4f}")
+else:
+    print("\n Une seule classe dans les données - AUC-ROC non calculable")
+
 
 print("\n[7/7] Feature Importance...")
 
@@ -150,7 +173,7 @@ joblib.dump({
 print(f"  ✓ Modèle sauvegardé: {model_path}")
 
 print("\n" + "="*70)
-print("COMPARAISON BASELINE vs AVANCÉ")
+print("COMPARAISON BASELINE vs AVANCE")
 print("="*70)
 
 try:
@@ -158,15 +181,15 @@ try:
     print("\nBaseline (7 features):")
     print("  - Features: scheduled_hour, day_of_week, month, is_weekend, airline, dep, arr")
     print("  - Hyperparams: n_estimators=100, max_depth=10")
-    
+
     print("\nModèle Avancé (24 features):")
     print("  - Features: 7 temporelles + 10 météo + 3 opérationnelles + 4 agrégées")
     print("  - Hyperparams: n_estimators=200, max_depth=15")
     print(f"  - CV Accuracy: {cv_scores.mean():.2%}")
     print(f"  - Test Accuracy: {(y_pred == y_test).mean():.2%}")
-    
+
 except FileNotFoundError:
-    print("  ℹ️  Baseline model non trouvé (comparaison impossible)")
+    print("  Baseline model non trouvé (comparaison impossible)")
 
 print("\n" + "="*70)
 print("RECOMMANDATIONS POUR AMÉLIORATION")
