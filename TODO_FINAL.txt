@@ -1,0 +1,197 @@
+═══════════════════════════════════════════════════════════════
+ PLAN FINAL - COLLECTE SYNCHRONISEE 
+═══════════════════════════════════════════════════════════════
+
+ UN SEUL SCRIPT : collect_sync.py
+   (Vols + Météo au même moment)
+
+═══════════════════════════════════════════════════════════════
+ DIMANCHE 11 JANVIER
+═══════════════════════════════════════════════════════════════
+ 7H00
+───────────────────────────────────────────────────────────────
+ ssh ubuntu@IP
+ cd ~/flight-delay-prediction && source mon_env/bin/activate
+ python3 scripts/collect_sync.py 10
+ exit
+
+ 13H00
+───────────────────────────────────────────────────────────────
+ ssh ubuntu@IP
+ cd ~/flight-delay-prediction && source mon_env/bin/activate
+ python3 scripts/collect_sync.py 10
+ exit
+
+ 18H00
+───────────────────────────────────────────────────────────────
+ ssh ubuntu@IP
+ cd ~/flight-delay-prediction && source mon_env/bin/activate
+ python3 scripts/collect_sync.py 10
+ exit
+
+ 22H00
+───────────────────────────────────────────────────────────────
+ ssh ubuntu@IP
+ cd ~/flight-delay-prediction && source mon_env/bin/activate
+ python3 scripts/collect_sync.py 10
+ Bilan:
+   python3 << 'PYTHON'
+from src.data_processing import get_mongodb_client
+client = get_mongodb_client()
+vols = client.db.aviationstack_flights.count_documents({})
+meteo = client.db.weather_data.count_documents({})
+print(f"Jour 1: {vols} vols, {meteo} météo")
+client.close()
+PYTHON
+☐ exit
+
+═══════════════════════════════════════════════════════════════
+ LUNDI 12 JANVIER
+═══════════════════════════════════════════════════════════════
+ 7H00
+───────────────────────────────────────────────────────────────
+ ssh ubuntu@IP
+ cd ~/flight-delay-prediction && source mon_env/bin/activate
+ python3 scripts/collect_sync.py 10
+ exit
+
+ 13H00
+───────────────────────────────────────────────────────────────
+ ssh ubuntu@IP
+ cd ~/flight-delay-prediction && source mon_env/bin/activate
+ python3 scripts/collect_sync.py 10
+ exit
+
+ 18H00
+───────────────────────────────────────────────────────────────
+ ssh ubuntu@IP
+ cd ~/flight-delay-prediction && source mon_env/bin/activate
+ python3 scripts/collect_sync.py 10
+ exit
+
+ 22H00 - BILAN FINAL
+───────────────────────────────────────────────────────────────
+ ssh ubuntu@IP
+ cd ~/flight-delay-prediction && source mon_env/bin/activate
+ python3 scripts/collect_sync.py 10
+ Bilan final:
+   python3 << 'PYTHON'
+from src.data_processing import get_mongodb_client
+client = get_mongodb_client()
+vols = client.db.aviationstack_flights.count_documents({})
+meteo = client.db.weather_data.count_documents({})
+retards = client.db.aviationstack_flights.count_documents({'departure.delay': {'$gt': 15}})
+print("\n" + "="*60)
+print(" BILAN FINAL - 2 JOURS")
+print("="*60)
+print(f" Vols: {vols}")
+print(f" Retards: {retards} ({retards/vols*100:.1f}%)")
+print(f" Météo: {meteo}")
+print(f"\n Prêt pour re-entraînement demain !")
+print("="*60)
+client.close()
+PYTHON
+☐ exit
+
+═══════════════════════════════════════════════════════════════
+ MARDI 13 JANVIER - RE-ENTRAÎNEMENT
+═══════════════════════════════════════════════════════════════
+
+ 1. Connexion
+    ssh ubuntu@IP
+    cd ~/flight-delay-prediction
+    source mon_env/bin/activate
+
+ 2. Installer SMOTE
+    pip install imbalanced-learn --break-system-packages
+
+ 3. Modifier train_advanced_model.py
+    nano scripts/train_advanced_model.py
+    
+    # Ligne ~70: X_train, X_test, y_train, y_test = train_test_split(...)
+    # AJOUTER JUSTE APRÈS:
+    
+    print("\n[Bonus] Application SMOTE...")
+    from imblearn.over_sampling import SMOTE
+    smote = SMOTE(random_state=42)
+    X_train, y_train = smote.fit_resample(X_train, y_train)
+    print("  Classes équilibrées")
+    
+    # Ctrl+O, Enter, Ctrl+X
+
+ 4. Re-générer dataset (10 min)
+    python3 scripts/enhanced_feature_engineering.py
+
+ 5. Re-entraîner modèle (5 min)
+    python3 scripts/train_advanced_model.py
+
+ 6. Créer script analyse
+    cat > compare_results.py << 'PYEOF'
+#!/usr/bin/env python3
+import pandas as pd
+import joblib
+
+print("\n" + "="*70)
+print(" RESULTATS FINAUX - COLLECTE SYNCHRONISEE")
+print("="*70)
+
+model = joblib.load('data/models/advanced_model.pkl')
+
+print(f"\n PERFORMANCE:")
+print(f"  CV Accuracy: {model['cv_scores'].mean():.2%}")
+print(f"  Test Accuracy: {model['test_accuracy']:.2%}")
+
+print(f"\n TOP 10 FEATURES:")
+fi = pd.DataFrame(model['feature_importance'])
+for i, row in fi.head(10).iterrows():
+    icon = "🌤️" if any(x in row['feature'] for x in ['weather','temp','wind','visibility','precipitation']) else "📅"
+    print(f"  {icon} {i+1}. {row['feature']:30s} {row['importance']:6.2%}")
+
+df = pd.read_csv('data/processed/flights_features_enhanced.csv')
+print(f"\n DATASET: {len(df)} vols, {(df['is_delayed']==1).sum()} retards")
+
+from src.data_processing import get_mongodb_client
+client = get_mongodb_client()
+meteo = client.db.weather_data.count_documents({})
+print(f" Météo: {meteo} obs")
+client.close()
+
+print(f"\n COMPARAISON:")
+print(f"  Baseline: 7 features, 98% acc, 25% recall")
+print(f"  Avancé: 24 features, {model['test_accuracy']:.1%} acc, 60-70% recall attendu")
+
+print("\n" + "="*70)
+print(" TERMINE - Prêt pour le rapport !")
+print("="*70 + "\n")
+PYEOF
+
+7. Analyser & Screenshot
+    python3 compare_results.py
+    #  SCREENSHOT !
+
+8. Déconnexion
+    exit
+
+═══════════════════════════════════════════════════════════════
+
+RESUME
+═══════════════════════════════════════════════════════════════
+
+SCRIPTS UTILISÉS:
+  collect_sync.py           (vols + météo)
+  enhanced_feature_engineering.py
+  train_advanced_model.py
+  compare_results.py
+
+SCRIPTS NON UTILISÉS:
+  collect_continuous.py
+  collect_weather_continuous.py
+
+RÉSULTATS:
+   ~1700 vols (1294 anciens + 400 nouveaux synchronisés)
+   ~470 obs météo
+   Modèle avec données synchronisées
+
+═══════════════════════════════════════════════════════════════
+ FIN TODO LIST FINALE
+═══════════════════════════════════════════════════════════════

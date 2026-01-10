@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Entraînement modèle avancé avec 24 features UML"""
+"""Entraînement modèle avancé avec 24 features """
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -13,7 +13,7 @@ from sklearn.preprocessing import LabelEncoder
 import joblib
 
 print("="*70)
-print("ENTRAÎNEMENT MODÈLE AVANCÉ - 24 FEATURES UML")
+print("ENTRAÎNEMENT MODELE AVANCE - 24 FEATURES ")
 print("="*70)
 
 print("\n[1/7] Chargement dataset enhanced...")
@@ -64,7 +64,7 @@ df_clean = df_clean.fillna({
 df_clean = df_clean.dropna()
 
 
-print(f"  ✓ {len(df_clean)} vols après suppression NaN")
+print(f"   {len(df_clean)} vols après suppression NaN")
 
 X = df_clean[features]
 y = df_clean['is_delayed']
@@ -77,8 +77,15 @@ print("\n[3/7] Split train/test...")
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
-print(f"  ✓ Train: {len(X_train)} vols")
-print(f"  ✓ Test: {len(X_test)} vols")
+print(f"   Train: {len(X_train)} vols")
+print(f"   Test: {len(X_test)} vols")
+
+ print("\n[Bonus] Application SMOTE...")
+ from imblearn.over_sampling import SMOTE
+ smote = SMOTE(random_state=42)
+ X_train, y_train = smote.fit_resample(X_train, y_train)
+ print("  Classes équilibrées")
+
 
 print("\n[4/7] Entraînement Random Forest avancé...")
 print("  Configuration:")
@@ -101,11 +108,11 @@ model = RandomForestClassifier(
 )
 
 model.fit(X_train, y_train)
-print("  ✓ Modèle entraîné")
+print("   Modèle entraîné")
 
 print("\n[5/7] Validation croisée (5-fold)...")
 cv_scores = cross_val_score(model, X_train, y_train, cv=5, scoring='accuracy')
-print(f"  ✓ CV Accuracy: {cv_scores.mean():.4f} (±{cv_scores.std():.4f})")
+print(f"   CV Accuracy: {cv_scores.mean():.4f} (±{cv_scores.std():.4f})")
 
 print("\n[6/7] Évaluation sur test set...")
 y_pred = model.predict(X_test)
@@ -170,7 +177,7 @@ joblib.dump({
     'feature_importance': importances.to_dict('records')
 }, model_path)
 
-print(f"  ✓ Modèle sauvegardé: {model_path}")
+print(f"  Modèle sauvegardé: {model_path}")
 
 print("\n" + "="*70)
 print("COMPARAISON BASELINE vs AVANCE")
@@ -216,5 +223,5 @@ print("""
 """)
 
 print("="*70)
-print("✓ ENTRAÎNEMENT TERMINÉ")
+print("ENTRAÎNEMENT TERMINE")
 print("="*70)
