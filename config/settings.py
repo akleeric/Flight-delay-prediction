@@ -10,6 +10,7 @@ class Settings:
     AVIATIONSTACK_BASE_URL = "http://api.aviationstack.com/v1"
     AIRFRANCEKLM_API_KEY = os.getenv('AIRFRANCEKLM_API_KEY', '')
     AIRFRANCEKLM_API_SECRET = os.getenv('AIRFRANCEKLM_API_SECRET', '')
+    AIRFRANCEKLM_BASE_URL = 'https://api.airfranceklm.com/opendata/flightstatus/'
     OPENWEATHER_API_KEY = os.getenv('OPENWEATHER_API_KEY', '')
     OPENWEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5"
     MONGODB_URI = os.getenv('MONGODB_URI', '')
