@@ -12,7 +12,7 @@ from sklearn.preprocessing import LabelEncoder
 import joblib
 
 print("="*60)
-print("ENTRAÎNEMENT MODÈLE DE BASE")
+print("ENTRAÎNEMENT MODELE DE BASE")
 print("="*60)
 
 # Charger les données
@@ -64,7 +64,7 @@ print("✓ Modèle entraîné")
 y_pred = model.predict(X_test)
 
 print("\n" + "="*60)
-print("RÉSULTATS")
+print("RESULTATS")
 print("="*60)
 print("\nClassification Report:")
 print(classification_report(y_test, y_pred))
@@ -91,5 +91,5 @@ joblib.dump({
     'features': features
 }, model_path)
 
-print(f"\n✓ Modèle sauvegardé: {model_path}")
+print(f"\n Modèle sauvegardé: {model_path}")
 print("="*60)

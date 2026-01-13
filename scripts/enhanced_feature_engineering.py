@@ -216,7 +216,7 @@ def build_enhanced_features(mongodb_collection_name='aviationstack_flights',
     agg_df = pd.DataFrame(aggregated_features)
     df = pd.concat([df, agg_df], axis=1)
 
-    print(f"  ✓ 4 features agrégées créées")
+    print(f"  4 features agrégées créées")
 
     df['is_delayed'] = (df['delay_minutes'] > 15).astype(int)
 
@@ -224,7 +224,7 @@ def build_enhanced_features(mongodb_collection_name='aviationstack_flights',
         'scheduled_hour', 'day_of_week', 'month', 'is_weekend', 'is_holiday', 'season', 'time_of_day',
         'dep_temperature', 'dep_wind_speed', 'dep_visibility', 'dep_precipitation', 'dep_weather_bad',
         'arr_temperature', 'arr_wind_speed', 'arr_visibility', 'arr_precipitation', 'arr_weather_bad',
-        'flight_distance_km', 'scheduled_duration_min', 
+        'flight_distance_km', 'scheduled_duration_min',
         'airline_encoded', 'dep_encoded', 'arr_encoded',
         'airline_avg_delay', 'route_avg_delay', 'airport_congestion', 'prev_flight_delay',
         'flight_iata', 'airline_iata', 'airline_name', 'departure_airport', 'arrival_airport',
@@ -239,7 +239,7 @@ def build_enhanced_features(mongodb_collection_name='aviationstack_flights',
     df_final.to_csv(output_path, index=False)
 
     print("\n" + "="*70)
-    print("RÉSUMÉ")
+    print("RÉSUME")
     print("="*70)
     print(f"Total vols: {len(df_final)}")
     print(f"Features: 24 (+ métadonnées)")
