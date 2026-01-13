@@ -374,8 +374,8 @@ elif page == "A propos":
                 health = response.json()
                 st.success(f"""
                 **API Status**: {health['status']}
-                **Model Loaded**: {'✅' if health['model_loaded'] else '❌'}  
-                **DB Connected**: {'✅' if health['database_connected'] else '❌'}
+                **Model Loaded**: {'GOOD' if health['model_loaded'] else 'NOT GOOD'}
+                **DB Connected**: {'GOOD' if health['database_connected'] else 'NOT GOOD'}
                 """)
         except:
             st.error("API non accessible")
