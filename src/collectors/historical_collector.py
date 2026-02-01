@@ -94,7 +94,7 @@ class HistoricalFlightCollector:
 
                     logger.info(f"{airport}: {len(all_flights)} vols finalisés cumulés")
 
-                else:
+                else: 
                     logger.warning(f"{airport}: HTTP {response.status_code}")
 
                 time.sleep(2)
