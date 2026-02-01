@@ -86,7 +86,7 @@ class HistoricalFlightCollector:
                         if f.get('flight_status') != "landed": 
                             continue
                         # 3. arrival.actual doit exister et ne pas être null
-                        arrival = f.get('arrival') or {}
+                        arrival = f.get('arrival')
                         if arrival.get('actual') is None or arrival.get('actual') == "":
                             continue
 
