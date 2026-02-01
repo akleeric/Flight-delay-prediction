@@ -79,12 +79,15 @@ class HistoricalFlightCollector:
                     for f in flights:
                         if len(all_flights) >= 10:
                             break
-
+                        #Vol du jour
                         if f.get('flight_date') != today_str:
                             continue
-
+                        # 2. Statut "landed" 
+                        if f.get('flight_status') != "landed": 
+                            continue
+                        # 3. arrival.actual doit exister et ne pas être null
                         arrival = f.get('arrival') or {}
-                        if arrival.get('actual') is None:
+                        if arrival.get('actual') is None or arrival.get('actual') == "":
                             continue
 
                         all_flights.append(f)
@@ -102,7 +105,8 @@ class HistoricalFlightCollector:
         # -------------------------------
         # SAUVEGARDE DANS LA BASE HISTORIQUE
         # -------------------------------
-        collection = self.db['aviationstack_historical_flights']
+        # collection = self.db['aviationstack_historical_flights']
+        collection = self.db['aviationstack_historical_landed_flights']
         saved = 0
 
         for flight in all_flights:
