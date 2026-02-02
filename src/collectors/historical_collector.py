@@ -97,7 +97,7 @@ class HistoricalFlightCollector:
                 else: 
                     logger.warning(f"{airport}: HTTP {response.status_code}")
 
-                time.sleep(2)
+                time.sleep(5)
 
             except Exception as e:
                 logger.error(f"{airport}: {e}")
