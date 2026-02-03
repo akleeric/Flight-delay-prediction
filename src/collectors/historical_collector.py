@@ -58,7 +58,7 @@ class HistoricalFlightCollector:
         today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
 
         for airport in self.airports:
-            if len(all_flights) >= 10:
+            if len(all_flights) >= 50:
                 break  # Limite de test
 
             try:
@@ -67,7 +67,7 @@ class HistoricalFlightCollector:
                     params={
                         'access_key': self.aviationstack_key,
                         'dep_iata': airport,
-                        'limit': 50
+                        'limit': 100
                     },
                     timeout=15
                 )
@@ -77,7 +77,7 @@ class HistoricalFlightCollector:
 
                     # Filtrer : vols du jour + arrival.actual != None
                     for f in flights:
-                        if len(all_flights) >= 10:
+                        if len(all_flights) >= 50:
                             break
                         #Vol du jour
                         if f.get('flight_date') != today_str:
