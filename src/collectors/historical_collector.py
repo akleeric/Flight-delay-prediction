@@ -122,7 +122,7 @@ class HistoricalFlightCollector:
             except Exception as e:
                 logger.error(f"Erreur MongoDB pour {flight.get('_id')}: {e}")
 
-        logger.info(f"Historique: {saved} vols finalisés sauvegardés (TEST)")
+        logger.info(f"Historique: {saved} vols finalisés sauvegardés")
         return saved
 
     def run(self):
