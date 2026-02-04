@@ -35,6 +35,7 @@ class HistoricalFlightCollector:
 
     def __init__(self, airports=None):
         self.aviationstack_key = os.getenv('AVIATIONSTACK_API_KEY')
+        self.weather_key = os.getenv('OPENWEATHER_API_KEY')
 
         # -------------------------------
         # BASE DE DONNÉES HISTORIQUE
@@ -124,6 +125,36 @@ class HistoricalFlightCollector:
 
         logger.info(f"Historique: {saved} vols finalisés sauvegardés")
         return saved
+    
+    def collect_weather(self, cities=['Paris', 'Amsterdam', 'London', 'New York']):
+        """Collecter données météo"""
+        logger.info("Collecte Météo...")
+        collection = self.db['weather_data']
+        saved = 0
+        for city in cities:
+            try:
+                response = requests.get(
+                    "http://api.openweathermap.org/data/2.5/weather",
+                    params={
+                        'q': city,
+                        'appid': self.weather_key,
+                        'units': 'metric'
+                    },
+                    timeout=10
+                )
+                if response.status_code == 200:
+                    data = response.json()
+                    data['collected_at'] = datetime.now(timezone.utc)
+                    data['_id'] = f"{city}_{datetime.now(timezone.utc).strftime('%Y%m%d%H')}"
+                    collection.update_one({'_id': data['_id']}, {'$set': data}, upsert=True)
+                    saved += 1
+                    logger.info(f"{city}: {data['main']['temp']}°C")
+                time.sleep(1)
+
+            except Exception as e:
+                logger.error(f"{city}: {e}")
+        logger.info(f"Météo: {saved} villes sauvegardées")
+        return saved
 
     def run(self):
         logger.info("=" * 70)
@@ -131,9 +162,10 @@ class HistoricalFlightCollector:
         logger.info("=" * 70)
 
         count = self.collect_aviationstack_historical_like()
+        weather_count = self.collect_weather()
 
         logger.info("=" * 70)
-        logger.info(f"Collecte terminée : {count} vols finalisés ajoutés")
+        logger.info(f"Collecte terminée : {count} vols finalisés ajoutés, Météo={weather_count}")
         logger.info("=" * 70)
 
     def close(self):
