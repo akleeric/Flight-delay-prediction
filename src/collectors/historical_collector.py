@@ -128,6 +128,7 @@ class HistoricalFlightCollector:
     
     def collect_weather(self, cities=['Paris', 'Amsterdam', 'London', 'New York']):
         """Collecter données météo"""
+        self.db = self.mongo_client['flight_delay_db']
         logger.info("Collecte Météo...")
         collection = self.db['weather_data']
         saved = 0
