@@ -1,0 +1,72 @@
+On a splité en 3 fichiers le contenu de train_delay_model.py :
+    - features.py 
+    - model.py 
+    - training.py 
+
+features.py
+👉 Contient toute la partie “ETAPE 1 à 7” de ton fichier initial
+
+C’est-à-dire :
+
+applatissement
+
+nettoyage
+
+conversion datetime
+
+calcul des délais
+
+ajout météo
+
+suppression des colonnes inutiles
+
+sélection des features finales
+
+split train/test
+
+En gros :
+📌 tout ce qui prépare les données pour le modèle
+
+
+model.py
+👉 Contient la partie “ETAPE 8 : PIPELINE SKLEARN COMPLET”
+
+C’est-à-dire :
+
+définition des colonnes catégorielles
+
+OneHotEncoder
+
+ColumnTransformer
+
+GradientBoostingRegressor
+
+Pipeline sklearn
+
+save_model()
+
+load_model()
+
+En gros :
+📌 tout ce qui concerne le modèle lui-même
+
+
+training.py
+👉 Contient la partie “orchestration”
+
+C’est-à-dire :
+
+charger les données depuis Mongo
+
+appeler build_training_dataset()
+
+appeler build_model()
+
+entraîner
+
+évaluer
+
+sauvegarder
+
+En gros :
+📌 le chef d’orchestre du pipeline ML
