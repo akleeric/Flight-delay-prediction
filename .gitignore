@@ -39,10 +39,10 @@ Thumbs.db
 *.log
 
 # Data files
-data/raw/*.csv
-data/processed/*.csv
-*.db
-*.sqlite
+#data/raw/*.csv
+#data/processed/*.csv
+#*.db
+#*.sqlite
 
 # Models
 *.pkl
