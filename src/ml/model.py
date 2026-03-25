@@ -7,19 +7,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 MODEL_PATH = "data/models/flight_delay_model.pkl"
 
 
-def build_model():
-    """
-    Construit le pipeline sklearn complet :
-    - OneHotEncoder sur les variables catégorielles
-    - GradientBoostingRegressor comme modèle
-    """
-    categorical_features = [
-        "airline_name",
-        "departure_iata",
-        "arrival_iata",
-        "departure_meteo",
-    ]
-
+def build_model(categorical_features):
     preprocessor = ColumnTransformer(
         transformers=[
             ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_features),
@@ -27,21 +15,17 @@ def build_model():
         remainder="passthrough",
     )
 
-    gbr = GradientBoostingRegressor(
+    model = GradientBoostingRegressor(
         learning_rate=0.1,
         max_depth=2,
         n_estimators=50,
-        random_state=42,
+        random_state=42
     )
 
-    model = Pipeline(
-        steps=[
-            ("preprocess", preprocessor),
-            ("model", gbr),
-        ]
-    )
-
-    return model
+    return Pipeline([
+        ("preprocess", preprocessor),
+        ("model", model),
+    ])
 
 
 def save_model(model):
