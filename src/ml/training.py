@@ -18,12 +18,16 @@ def train_model():
     logger.info(f"Taille X_train : {X_train.shape}")
     logger.info(f"Taille X_test  : {X_test.shape}")
 
-    categorical_features = X_train.select_dtypes(include=["object"]).columns.tolist()
+    #categorical_features = X_train.select_dtypes(include=["object"]).columns.tolist()
 
     logger.info("Construction du modèle GradientBoosting...")
-    model = build_model(categorical_features)
+    model = build_model()
 
     logger.info("Entraînement...")
+    # Vérifier les NaN dans X_train
+    nan_counts = X_train.isna().sum()
+    print("\n=== Colonnes contenant des NaN ===")
+    print(nan_counts[nan_counts > 0])
     model.fit(X_train, y_train)
 
     y_train_pred = model.predict(X_train)
