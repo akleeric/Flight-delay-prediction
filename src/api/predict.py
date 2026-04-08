@@ -20,8 +20,12 @@ def predict_delay(data: FlightInput):
         # Conversion en DataFrame
         df = pd.DataFrame([data.dict()])
 
-        # Prédiction
+        # Prédiction brute
         prediction = model.predict(df)[0]
+
+        # 🔥 Correction métier : un retard ne peut pas être négatif
+        if prediction < 0:
+            prediction = 0.0
 
         # Conversion float pour JSON
         return {
