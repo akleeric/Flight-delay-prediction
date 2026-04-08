@@ -1532,7 +1532,7 @@
         },
         {
             "flight_date": "2026-04-08",
-            "flight_status": "scheduled",
+            "flight_status": "active",
             "departure": {
                 "airport": "Charles De Gaulle",
                 "timezone": "Europe/Paris",
@@ -1556,7 +1556,7 @@
                 "gate": null,
                 "baggage": "08",
                 "scheduled": "2026-04-08T20:20:00+00:00",
-                "delay": null,
+                "delay": 34,
                 "estimated": null,
                 "actual": null,
                 "estimated_runway": null,
@@ -1590,7 +1590,7 @@
         },
         {
             "flight_date": "2026-04-08",
-            "flight_status": "scheduled",
+            "flight_status": "active",
             "departure": {
                 "airport": "Charles De Gaulle",
                 "timezone": "Europe/Paris",
@@ -1614,7 +1614,7 @@
                 "gate": null,
                 "baggage": "08",
                 "scheduled": "2026-04-08T20:20:00+00:00",
-                "delay": null,
+                "delay": 34,
                 "estimated": null,
                 "actual": null,
                 "estimated_runway": null,
@@ -2344,7 +2344,7 @@
         },
         {
             "flight_date": "2026-04-08",
-            "flight_status": "landed",
+            "flight_status": "active",
             "departure": {
                 "airport": "Charles De Gaulle",
                 "timezone": "Europe/Paris",
@@ -2366,13 +2366,13 @@
                 "icao": "EHAM",
                 "terminal": null,
                 "gate": "C13",
-                "baggage": "13",
+                "baggage": "11",
                 "scheduled": "2026-04-08T19:15:00+00:00",
-                "delay": null,
-                "estimated": "2026-04-08T18:58:00+00:00",
-                "actual": "2026-04-08T19:02:00+00:00",
-                "estimated_runway": "2026-04-08T19:02:00+00:00",
-                "actual_runway": "2026-04-08T19:02:00+00:00"
+                "delay": 25,
+                "estimated": "2026-04-08T19:02:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
             },
             "airline": {
                 "name": "WestJet",
@@ -2402,7 +2402,7 @@
         },
         {
             "flight_date": "2026-04-08",
-            "flight_status": "landed",
+            "flight_status": "active",
             "departure": {
                 "airport": "Charles De Gaulle",
                 "timezone": "Europe/Paris",
@@ -2424,13 +2424,13 @@
                 "icao": "EHAM",
                 "terminal": null,
                 "gate": "C13",
-                "baggage": "13",
+                "baggage": "11",
                 "scheduled": "2026-04-08T19:15:00+00:00",
-                "delay": null,
-                "estimated": "2026-04-08T18:58:00+00:00",
-                "actual": "2026-04-08T19:02:00+00:00",
-                "estimated_runway": "2026-04-08T19:02:00+00:00",
-                "actual_runway": "2026-04-08T19:02:00+00:00"
+                "delay": 25,
+                "estimated": "2026-04-08T19:02:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
             },
             "airline": {
                 "name": "Kenya Airways",
@@ -2460,7 +2460,7 @@
         },
         {
             "flight_date": "2026-04-08",
-            "flight_status": "landed",
+            "flight_status": "active",
             "departure": {
                 "airport": "Charles De Gaulle",
                 "timezone": "Europe/Paris",
@@ -2482,13 +2482,13 @@
                 "icao": "EHAM",
                 "terminal": null,
                 "gate": "C13",
-                "baggage": "13",
+                "baggage": "11",
                 "scheduled": "2026-04-08T19:15:00+00:00",
-                "delay": null,
-                "estimated": "2026-04-08T18:58:00+00:00",
-                "actual": "2026-04-08T19:02:00+00:00",
-                "estimated_runway": "2026-04-08T19:02:00+00:00",
-                "actual_runway": "2026-04-08T19:02:00+00:00"
+                "delay": 25,
+                "estimated": "2026-04-08T19:02:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
             },
             "airline": {
                 "name": "KLM",
@@ -2518,7 +2518,7 @@
         },
         {
             "flight_date": "2026-04-08",
-            "flight_status": "landed",
+            "flight_status": "active",
             "departure": {
                 "airport": "Charles De Gaulle",
                 "timezone": "Europe/Paris",
@@ -2540,13 +2540,13 @@
                 "icao": "EHAM",
                 "terminal": null,
                 "gate": "C13",
-                "baggage": "13",
+                "baggage": "11",
                 "scheduled": "2026-04-08T19:15:00+00:00",
-                "delay": null,
-                "estimated": "2026-04-08T18:58:00+00:00",
-                "actual": "2026-04-08T19:02:00+00:00",
-                "estimated_runway": "2026-04-08T19:02:00+00:00",
-                "actual_runway": "2026-04-08T19:02:00+00:00"
+                "delay": 25,
+                "estimated": "2026-04-08T19:02:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
             },
             "airline": {
                 "name": "Garuda Indonesia",
@@ -2576,7 +2576,7 @@
         },
         {
             "flight_date": "2026-04-08",
-            "flight_status": "landed",
+            "flight_status": "active",
             "departure": {
                 "airport": "Charles De Gaulle",
                 "timezone": "Europe/Paris",
@@ -2598,13 +2598,13 @@
                 "icao": "EHAM",
                 "terminal": null,
                 "gate": "C13",
-                "baggage": "13",
+                "baggage": "11",
                 "scheduled": "2026-04-08T19:15:00+00:00",
-                "delay": null,
-                "estimated": "2026-04-08T18:58:00+00:00",
-                "actual": "2026-04-08T19:02:00+00:00",
-                "estimated_runway": "2026-04-08T19:02:00+00:00",
-                "actual_runway": "2026-04-08T19:02:00+00:00"
+                "delay": 25,
+                "estimated": "2026-04-08T19:02:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
             },
             "airline": {
                 "name": "Gol",
@@ -2634,7 +2634,7 @@
         },
         {
             "flight_date": "2026-04-08",
-            "flight_status": "landed",
+            "flight_status": "active",
             "departure": {
                 "airport": "Charles De Gaulle",
                 "timezone": "Europe/Paris",
@@ -2656,13 +2656,13 @@
                 "icao": "EHAM",
                 "terminal": null,
                 "gate": "C13",
-                "baggage": "13",
+                "baggage": "11",
                 "scheduled": "2026-04-08T19:15:00+00:00",
-                "delay": null,
-                "estimated": "2026-04-08T18:58:00+00:00",
-                "actual": "2026-04-08T19:02:00+00:00",
-                "estimated_runway": "2026-04-08T19:02:00+00:00",
-                "actual_runway": "2026-04-08T19:02:00+00:00"
+                "delay": 25,
+                "estimated": "2026-04-08T19:02:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
             },
             "airline": {
                 "name": "Aeromexico",
