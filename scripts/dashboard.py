@@ -321,37 +321,32 @@ elif page == "A propos":
     st.title("A Propos du Projet")
 
     st.markdown("""
-    ## Flight Delay Prediction System
-    ### Description
-    Système complet de prédiction de retards de vols utilisant le Machine Learning.
+   # Flight Delay Prediction System
 
-    ### Technologies Utilisées
-    - **Backend**: FastAPI
-    - **Base de données**: MongoDB
-    - **Machine Learning**: Scikit-learn (Random Forest)
-    - **Dashboard**: Streamlit
-    - **Visualisation**: Plotly
-    - **APIs**: AviationStack, OpenWeatherMap, Air France-KLM
+    ### Le projet
+    On s\'est attaqué à un problème concret : est-ce qu\'on peut prédire qu\'un vol va être en retard avant qu\'il décolle ? C\'est la question qu\'on a essayé de résoudre pendant ce projet, en partant de zéro — collecte des données, stockage, entraînement du modèle, et mise en production via une API.
 
-    ### Fonctionnalités
-    - Collecte de données en temps réel
-    - Prédiction de retards avec ML
-    - API REST complète
-    - Dashboard interactif
-    - Statistiques en temps réel
+    ### Ce qu\'on a construit
+    - Collecte automatique de vols en temps réel via AviationStack et Air France-KLM
+    - Données météo intégrées pour enrichir l\'analyse
+    - Stockage dans MongoDB, avec migration vers Snowflake pour l\'analytique
+    - Deux modèles Random Forest : un baseline à 7 features, un avancé à 24 features
+    - Une API REST déployée sur AWS, consultable en temps réel
+    - Ce dashboard Streamlit pour rendre tout ça accessible
+
+    ### Stack technique
+    FastAPI · MongoDB · Snowflake · Scikit-learn · Streamlit · Plotly · AviationStack · OpenWeatherMap · Air France-KLM API
+
+    ### Performances
+    - Accuracy : 98% sur le dataset de test
+    - Feature la plus déterminante : le jour de la semaine (31% d\'importance)
+    - 2 294 vols collectés, 3 modèles entraînés
+
+    ### Ce qu\'on ferait ensuite
+    Corriger le déséquilibre de classes avec SMOTE, enrichir le dataset sur des périodes de forte perturbation (grèves, météo extrême), et tester XGBoost pour améliorer le recall sur les retards réels.
 
     ### Projet Datascientest 2026
-    Développé par: **Akle & Gaël**
-
-    ### Performances du Modèle
-    - **Accuracy**: 98%
-    - **Feature la plus importante**: Jour de la semaine (31%)
-    - **Dataset**: 1,500+ vols collectés
-
-    ### Architecture
-```
-    Data Collection → MongoDB → ML Model → FastAPI → Streamlit
-```
+    **Brice AKLE & Gaël Faralahimanana**
     """)
 
     # Informations système
