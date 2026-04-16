@@ -1,0 +1,582 @@
+[
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "2F",
+            "gate": "F05",
+            "delay": null,
+            "scheduled": "2026-04-16T18:35:00+00:00",
+            "estimated": "2026-04-16T18:35:00+00:00",
+            "actual": "2026-04-16T18:55:00+00:00",
+            "estimated_runway": "2026-04-16T18:55:00+00:00",
+            "actual_runway": "2026-04-16T18:55:00+00:00"
+        },
+        "arrival": {
+            "airport": "El Prat De Llobregat",
+            "timezone": "Europe/Madrid",
+            "iata": "BCN",
+            "icao": "LEBL",
+            "terminal": "1",
+            "gate": null,
+            "baggage": "8",
+            "scheduled": "2026-04-16T20:20:00+00:00",
+            "delay": null,
+            "estimated": "2026-04-16T20:12:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "Kenya Airways",
+            "iata": "KQ",
+            "icao": "KQA"
+        },
+        "flight": {
+            "number": "3206",
+            "iata": "KQ3206",
+            "icao": "KQA3206",
+            "codeshared": {
+                "airline_name": "air france",
+                "airline_iata": "af",
+                "airline_icao": "afr",
+                "flight_number": "1248",
+                "flight_iata": "af1248",
+                "flight_icao": "afr1248"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "3991E8"
+        },
+        "live": null
+    },
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "2F",
+            "gate": "F05",
+            "delay": null,
+            "scheduled": "2026-04-16T18:35:00+00:00",
+            "estimated": "2026-04-16T18:35:00+00:00",
+            "actual": "2026-04-16T18:55:00+00:00",
+            "estimated_runway": "2026-04-16T18:55:00+00:00",
+            "actual_runway": "2026-04-16T18:55:00+00:00"
+        },
+        "arrival": {
+            "airport": "El Prat De Llobregat",
+            "timezone": "Europe/Madrid",
+            "iata": "BCN",
+            "icao": "LEBL",
+            "terminal": "1",
+            "gate": null,
+            "baggage": "8",
+            "scheduled": "2026-04-16T20:20:00+00:00",
+            "delay": null,
+            "estimated": "2026-04-16T20:12:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "Gol",
+            "iata": "G3",
+            "icao": "GLO"
+        },
+        "flight": {
+            "number": "5235",
+            "iata": "G35235",
+            "icao": "GLO5235",
+            "codeshared": {
+                "airline_name": "air france",
+                "airline_iata": "af",
+                "airline_icao": "afr",
+                "flight_number": "1248",
+                "flight_iata": "af1248",
+                "flight_icao": "afr1248"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "3991E8"
+        },
+        "live": null
+    },
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "2F",
+            "gate": "F05",
+            "delay": null,
+            "scheduled": "2026-04-16T18:35:00+00:00",
+            "estimated": "2026-04-16T18:35:00+00:00",
+            "actual": "2026-04-16T18:55:00+00:00",
+            "estimated_runway": "2026-04-16T18:55:00+00:00",
+            "actual_runway": "2026-04-16T18:55:00+00:00"
+        },
+        "arrival": {
+            "airport": "El Prat De Llobregat",
+            "timezone": "Europe/Madrid",
+            "iata": "BCN",
+            "icao": "LEBL",
+            "terminal": "1",
+            "gate": null,
+            "baggage": "8",
+            "scheduled": "2026-04-16T20:20:00+00:00",
+            "delay": null,
+            "estimated": "2026-04-16T20:12:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "Aeromexico",
+            "iata": "AM",
+            "icao": "AMX"
+        },
+        "flight": {
+            "number": "6030",
+            "iata": "AM6030",
+            "icao": "AMX6030",
+            "codeshared": {
+                "airline_name": "air france",
+                "airline_iata": "af",
+                "airline_icao": "afr",
+                "flight_number": "1248",
+                "flight_iata": "af1248",
+                "flight_icao": "afr1248"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "3991E8"
+        },
+        "live": null
+    },
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "2E",
+            "gate": "E12",
+            "delay": null,
+            "scheduled": "2026-04-16T18:25:00+00:00",
+            "estimated": "2026-04-16T18:25:00+00:00",
+            "actual": "2026-04-16T18:49:00+00:00",
+            "estimated_runway": "2026-04-16T18:49:00+00:00",
+            "actual_runway": "2026-04-16T18:49:00+00:00"
+        },
+        "arrival": {
+            "airport": "Felix Houphouet Boigny",
+            "timezone": "Africa/Abidjan",
+            "iata": "ABJ",
+            "icao": "DIAP",
+            "terminal": "1",
+            "gate": null,
+            "baggage": null,
+            "scheduled": "2026-04-16T23:10:00+00:00",
+            "delay": null,
+            "estimated": "2026-04-16T23:00:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "KLM",
+            "iata": "KL",
+            "icao": "KLM"
+        },
+        "flight": {
+            "number": "2390",
+            "iata": "KL2390",
+            "icao": "KLM2390",
+            "codeshared": {
+                "airline_name": "air france",
+                "airline_iata": "af",
+                "airline_icao": "afr",
+                "flight_number": "706",
+                "flight_iata": "af706",
+                "flight_icao": "afr706"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "39CF03"
+        },
+        "live": null
+    },
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "2E",
+            "gate": "E12",
+            "delay": null,
+            "scheduled": "2026-04-16T18:25:00+00:00",
+            "estimated": "2026-04-16T18:25:00+00:00",
+            "actual": "2026-04-16T18:49:00+00:00",
+            "estimated_runway": "2026-04-16T18:49:00+00:00",
+            "actual_runway": "2026-04-16T18:49:00+00:00"
+        },
+        "arrival": {
+            "airport": "Felix Houphouet Boigny",
+            "timezone": "Africa/Abidjan",
+            "iata": "ABJ",
+            "icao": "DIAP",
+            "terminal": "1",
+            "gate": null,
+            "baggage": null,
+            "scheduled": "2026-04-16T23:10:00+00:00",
+            "delay": null,
+            "estimated": "2026-04-16T23:00:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "Delta Air Lines",
+            "iata": "DL",
+            "icao": "DAL"
+        },
+        "flight": {
+            "number": "8222",
+            "iata": "DL8222",
+            "icao": "DAL8222",
+            "codeshared": {
+                "airline_name": "air france",
+                "airline_iata": "af",
+                "airline_icao": "afr",
+                "flight_number": "706",
+                "flight_iata": "af706",
+                "flight_icao": "afr706"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "39CF03"
+        },
+        "live": null
+    },
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "2B",
+            "gate": null,
+            "delay": null,
+            "scheduled": "2026-04-16T18:15:00+00:00",
+            "estimated": "2026-04-16T18:15:00+00:00",
+            "actual": "2026-04-16T18:34:00+00:00",
+            "estimated_runway": "2026-04-16T18:34:00+00:00",
+            "actual_runway": "2026-04-16T18:34:00+00:00"
+        },
+        "arrival": {
+            "airport": "Leonardo Da Vinci (Fiumicino)",
+            "timezone": "Europe/Rome",
+            "iata": "FCO",
+            "icao": "LIRF",
+            "terminal": "1",
+            "gate": null,
+            "baggage": null,
+            "scheduled": "2026-04-16T20:25:00+00:00",
+            "delay": null,
+            "estimated": "2026-04-16T20:10:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "Icelandair",
+            "iata": "FI",
+            "icao": "ICE"
+        },
+        "flight": {
+            "number": "6719",
+            "iata": "FI6719",
+            "icao": "ICE6719",
+            "codeshared": {
+                "airline_name": "ita airways",
+                "airline_iata": "az",
+                "airline_icao": "ity",
+                "flight_number": "325",
+                "flight_iata": "az325",
+                "flight_icao": "ity325"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "4CADEE"
+        },
+        "live": null
+    },
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "1",
+            "gate": null,
+            "delay": null,
+            "scheduled": "2026-04-16T18:05:00+00:00",
+            "estimated": "2026-04-16T18:05:00+00:00",
+            "actual": "2026-04-16T18:44:00+00:00",
+            "estimated_runway": "2026-04-16T18:44:00+00:00",
+            "actual_runway": "2026-04-16T18:44:00+00:00"
+        },
+        "arrival": {
+            "airport": "Istanbul Airport",
+            "timezone": "Europe/Istanbul",
+            "iata": "IST",
+            "icao": "LTFM",
+            "terminal": null,
+            "gate": null,
+            "baggage": null,
+            "scheduled": "2026-04-16T22:40:00+00:00",
+            "delay": null,
+            "estimated": "2026-04-16T22:39:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "Pakistan International Airlines",
+            "iata": "PK",
+            "icao": "PIA"
+        },
+        "flight": {
+            "number": "5834",
+            "iata": "PK5834",
+            "icao": "PIA5834",
+            "codeshared": {
+                "airline_name": "turkish airlines",
+                "airline_iata": "tk",
+                "airline_icao": "thy",
+                "flight_number": "1834",
+                "flight_iata": "tk1834",
+                "flight_icao": "thy1834"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "4BB212"
+        },
+        "live": null
+    },
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "1",
+            "gate": null,
+            "delay": null,
+            "scheduled": "2026-04-16T18:05:00+00:00",
+            "estimated": "2026-04-16T18:05:00+00:00",
+            "actual": "2026-04-16T18:44:00+00:00",
+            "estimated_runway": "2026-04-16T18:44:00+00:00",
+            "actual_runway": "2026-04-16T18:44:00+00:00"
+        },
+        "arrival": {
+            "airport": "Istanbul Airport",
+            "timezone": "Europe/Istanbul",
+            "iata": "IST",
+            "icao": "LTFM",
+            "terminal": null,
+            "gate": null,
+            "baggage": null,
+            "scheduled": "2026-04-16T22:40:00+00:00",
+            "delay": null,
+            "estimated": "2026-04-16T22:39:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "Air Seychelles",
+            "iata": "HM",
+            "icao": "SEY"
+        },
+        "flight": {
+            "number": "6413",
+            "iata": "HM6413",
+            "icao": "SEY6413",
+            "codeshared": {
+                "airline_name": "turkish airlines",
+                "airline_iata": "tk",
+                "airline_icao": "thy",
+                "flight_number": "1834",
+                "flight_iata": "tk1834",
+                "flight_icao": "thy1834"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "4BB212"
+        },
+        "live": null
+    },
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "1",
+            "gate": null,
+            "delay": null,
+            "scheduled": "2026-04-16T18:05:00+00:00",
+            "estimated": "2026-04-16T18:05:00+00:00",
+            "actual": "2026-04-16T18:44:00+00:00",
+            "estimated_runway": "2026-04-16T18:44:00+00:00",
+            "actual_runway": "2026-04-16T18:44:00+00:00"
+        },
+        "arrival": {
+            "airport": "Istanbul Airport",
+            "timezone": "Europe/Istanbul",
+            "iata": "IST",
+            "icao": "LTFM",
+            "terminal": null,
+            "gate": null,
+            "baggage": null,
+            "scheduled": "2026-04-16T22:40:00+00:00",
+            "delay": null,
+            "estimated": "2026-04-16T22:39:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "Sichuan Airlines",
+            "iata": "3U",
+            "icao": "CSC"
+        },
+        "flight": {
+            "number": "7220",
+            "iata": "3U7220",
+            "icao": "CSC7220",
+            "codeshared": {
+                "airline_name": "turkish airlines",
+                "airline_iata": "tk",
+                "airline_icao": "thy",
+                "flight_number": "1834",
+                "flight_iata": "tk1834",
+                "flight_icao": "thy1834"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "4BB212"
+        },
+        "live": null
+    },
+    {
+        "flight_date": "2026-04-16",
+        "flight_status": "active",
+        "departure": {
+            "airport": "Charles De Gaulle",
+            "timezone": "Europe/Paris",
+            "iata": "CDG",
+            "icao": "LFPG",
+            "terminal": "2E",
+            "gate": "E12",
+            "delay": 15,
+            "scheduled": "2026-04-16T16:05:00+00:00",
+            "estimated": "2026-04-16T16:05:00+00:00",
+            "actual": "2026-04-16T16:50:00+00:00",
+            "estimated_runway": "2026-04-16T16:50:00+00:00",
+            "actual_runway": "2026-04-16T16:50:00+00:00"
+        },
+        "arrival": {
+            "airport": "Cotonou",
+            "timezone": "Africa/Porto-Novo",
+            "iata": "COO",
+            "icao": "DBBB",
+            "terminal": "2E",
+            "gate": null,
+            "baggage": null,
+            "scheduled": "2026-04-16T21:50:00+00:00",
+            "delay": 15,
+            "estimated": "2026-04-16T22:05:00+00:00",
+            "actual": null,
+            "estimated_runway": null,
+            "actual_runway": null
+        },
+        "airline": {
+            "name": "KLM",
+            "iata": "KL",
+            "icao": "KLM"
+        },
+        "flight": {
+            "number": "2274",
+            "iata": "KL2274",
+            "icao": "KLM2274",
+            "codeshared": {
+                "airline_name": "air france",
+                "airline_iata": "af",
+                "airline_icao": "afr",
+                "flight_number": "804",
+                "flight_iata": "af804",
+                "flight_icao": "afr804"
+            }
+        },
+        "aircraft": {
+            "registration": null,
+            "iata": null,
+            "icao": null,
+            "icao24": "3949F7"
+        },
+        "live": null
+    }
+]

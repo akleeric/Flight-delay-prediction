@@ -3876,5 +3876,2473 @@
             "speed": 2.57,
             "deg": 220
         }
+    },
+    {
+        "_id": "Paris_2026021217",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-02-12T17:58:40.353000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1770919005,
+        "id": 2988507,
+        "main": {
+            "temp": 9.78,
+            "feels_like": 6.75,
+            "temp_min": 8.92,
+            "temp_max": 10.68,
+            "pressure": 993,
+            "humidity": 80,
+            "sea_level": 993,
+            "grnd_level": 983
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1770879865,
+            "sunset": 1770915926
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "wind": {
+            "speed": 6.69,
+            "deg": 260
+        }
+    },
+    {
+        "_id": "Amsterdam_2026021217",
+        "base": "stations",
+        "clouds": {
+            "all": 75
+        },
+        "cod": 200,
+        "collected_at": "2026-02-12T17:58:41.431000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1770918678,
+        "id": 2759794,
+        "main": {
+            "temp": 6.88,
+            "feels_like": 2.55,
+            "temp_min": 6.03,
+            "temp_max": 7.76,
+            "pressure": 984,
+            "humidity": 86,
+            "sea_level": 984,
+            "grnd_level": 984
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1770879765,
+            "sunset": 1770914807
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04n"
+            }
+        ],
+        "wind": {
+            "speed": 8.23,
+            "deg": 270
+        }
+    },
+    {
+        "_id": "London_2026021217",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-02-12T17:58:42.501000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1770918310,
+        "id": 2643743,
+        "main": {
+            "temp": 8.14,
+            "feels_like": 6.97,
+            "temp_min": 7.22,
+            "temp_max": 9.54,
+            "pressure": 989,
+            "humidity": 89,
+            "sea_level": 989,
+            "grnd_level": 985
+        },
+        "name": "London",
+        "rain": {
+            "1h": 0.49
+        },
+        "sys": {
+            "type": 2,
+            "id": 268730,
+            "country": "GB",
+            "sunrise": 1770880834,
+            "sunset": 1770916145
+        },
+        "timezone": 0,
+        "visibility": 3700,
+        "weather": [
+            {
+                "id": 311,
+                "main": "Drizzle",
+                "description": "drizzle rain",
+                "icon": "09n"
+            },
+            {
+                "id": 500,
+                "main": "Rain",
+                "description": "light rain",
+                "icon": "10n"
+            }
+        ],
+        "wind": {
+            "speed": 2.06,
+            "deg": 340
+        }
+    },
+    {
+        "_id": "New York_2026021217",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-02-12T17:58:43.569000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1770918513,
+        "id": 5128581,
+        "main": {
+            "temp": 1.96,
+            "feels_like": -4.1,
+            "temp_min": 0.97,
+            "temp_max": 2.97,
+            "pressure": 1015,
+            "humidity": 50,
+            "sea_level": 1015,
+            "grnd_level": 1013
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1770897239,
+            "sunset": 1770935202
+        },
+        "timezone": -18000,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 8.94,
+            "deg": 319,
+            "gust": 12.07
+        }
+    },
+    {
+        "_id": "Paris_2026031118",
+        "base": "stations",
+        "clouds": {
+            "all": 20
+        },
+        "cod": 200,
+        "collected_at": "2026-03-11T18:14:58.063000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1773252453,
+        "id": 2988507,
+        "main": {
+            "temp": 10.91,
+            "feels_like": 9.73,
+            "temp_min": 9.65,
+            "temp_max": 11.28,
+            "pressure": 1018,
+            "humidity": 64,
+            "sea_level": 1018,
+            "grnd_level": 1010
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1773209573,
+            "sunset": 1773251320
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02n"
+            }
+        ],
+        "wind": {
+            "speed": 4.63,
+            "deg": 270
+        }
+    },
+    {
+        "_id": "Amsterdam_2026031118",
+        "base": "stations",
+        "clouds": {
+            "all": 40
+        },
+        "cod": 200,
+        "collected_at": "2026-03-11T18:14:59.148000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1773252076,
+        "id": 2759794,
+        "main": {
+            "temp": 9.04,
+            "feels_like": 6.77,
+            "temp_min": 8.25,
+            "temp_max": 9.44,
+            "pressure": 1014,
+            "humidity": 74,
+            "sea_level": 1014,
+            "grnd_level": 1014
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1773209079,
+            "sunset": 1773250595
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 802,
+                "main": "Clouds",
+                "description": "scattered clouds",
+                "icon": "03n"
+            }
+        ],
+        "wind": {
+            "speed": 4.12,
+            "deg": 260
+        }
+    },
+    {
+        "_id": "London_2026031118",
+        "base": "stations",
+        "clouds": {
+            "all": 35
+        },
+        "cod": 200,
+        "collected_at": "2026-03-11T18:15:00.227000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1773252415,
+        "id": 2643743,
+        "main": {
+            "temp": 10.87,
+            "feels_like": 9.58,
+            "temp_min": 10.27,
+            "temp_max": 11.25,
+            "pressure": 1015,
+            "humidity": 60,
+            "sea_level": 1015,
+            "grnd_level": 1012
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1773210251,
+            "sunset": 1773251830
+        },
+        "timezone": 0,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 802,
+                "main": "Clouds",
+                "description": "scattered clouds",
+                "icon": "03n"
+            }
+        ],
+        "wind": {
+            "speed": 5.14,
+            "deg": 260
+        }
+    },
+    {
+        "_id": "New York_2026031118",
+        "base": "stations",
+        "clouds": {
+            "all": 20
+        },
+        "cod": 200,
+        "collected_at": "2026-03-11T18:15:01.304000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1773252425,
+        "id": 5128581,
+        "main": {
+            "temp": 17.67,
+            "feels_like": 17.03,
+            "temp_min": 14.97,
+            "temp_max": 24.58,
+            "pressure": 1009,
+            "humidity": 59,
+            "sea_level": 1009,
+            "grnd_level": 1009
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1773227662,
+            "sunset": 1773269874
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02d"
+            }
+        ],
+        "wind": {
+            "speed": 3.6,
+            "deg": 30
+        }
+    },
+    {
+        "_id": "Paris_2026031119",
+        "base": "stations",
+        "clouds": {
+            "all": 20
+        },
+        "cod": 200,
+        "collected_at": "2026-03-11T19:02:05.133000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1773255301,
+        "id": 2988507,
+        "main": {
+            "temp": 10.3,
+            "feels_like": 9.16,
+            "temp_min": 8.88,
+            "temp_max": 11.1,
+            "pressure": 1020,
+            "humidity": 68,
+            "sea_level": 1020,
+            "grnd_level": 1011
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1773209573,
+            "sunset": 1773251320
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02n"
+            }
+        ],
+        "wind": {
+            "speed": 3.6,
+            "deg": 300
+        }
+    },
+    {
+        "_id": "Amsterdam_2026031119",
+        "base": "stations",
+        "clouds": {
+            "all": 20
+        },
+        "cod": 200,
+        "collected_at": "2026-03-11T19:02:06.210000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1773255514,
+        "id": 2759794,
+        "main": {
+            "temp": 8.38,
+            "feels_like": 6.22,
+            "temp_min": 7.14,
+            "temp_max": 8.88,
+            "pressure": 1014,
+            "humidity": 72,
+            "sea_level": 1014,
+            "grnd_level": 1015
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1773209079,
+            "sunset": 1773250595
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02n"
+            }
+        ],
+        "wind": {
+            "speed": 3.6,
+            "deg": 230
+        }
+    },
+    {
+        "_id": "London_2026031119",
+        "base": "stations",
+        "clouds": {
+            "all": 12
+        },
+        "cod": 200,
+        "collected_at": "2026-03-11T19:02:07.286000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1773255540,
+        "id": 2643743,
+        "main": {
+            "temp": 10.22,
+            "feels_like": 8.92,
+            "temp_min": 9.23,
+            "temp_max": 11.11,
+            "pressure": 1016,
+            "humidity": 62,
+            "sea_level": 1016,
+            "grnd_level": 1013
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1773210251,
+            "sunset": 1773251830
+        },
+        "timezone": 0,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02n"
+            }
+        ],
+        "wind": {
+            "speed": 5.66,
+            "deg": 260
+        }
+    },
+    {
+        "_id": "New York_2026031119",
+        "base": "stations",
+        "clouds": {
+            "all": 20
+        },
+        "cod": 200,
+        "collected_at": "2026-03-11T19:02:08.362000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1773255664,
+        "id": 5128581,
+        "main": {
+            "temp": 17.17,
+            "feels_like": 16.54,
+            "temp_min": 12.77,
+            "temp_max": 22.95,
+            "pressure": 1009,
+            "humidity": 61,
+            "sea_level": 1009,
+            "grnd_level": 1008
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1773227662,
+            "sunset": 1773269874
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02d"
+            }
+        ],
+        "wind": {
+            "speed": 3.6,
+            "deg": 30
+        }
+    },
+    {
+        "_id": "Paris_2026032317",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-03-23T17:34:38.953000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1774286598,
+        "id": 2988507,
+        "main": {
+            "temp": 15.67,
+            "feels_like": 14.44,
+            "temp_min": 14.56,
+            "temp_max": 16.1,
+            "pressure": 1020,
+            "humidity": 44,
+            "sea_level": 1020,
+            "grnd_level": 1011
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1774244856,
+            "sunset": 1774289207
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 2.57,
+            "deg": 330
+        }
+    },
+    {
+        "_id": "Amsterdam_2026032317",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-03-23T17:34:40.038000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1774286801,
+        "id": 2759794,
+        "main": {
+            "temp": 11.13,
+            "feels_like": 10.05,
+            "temp_min": 9.9,
+            "temp_max": 12.22,
+            "pressure": 1020,
+            "humidity": 67,
+            "sea_level": 1020,
+            "grnd_level": 1020
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1774244187,
+            "sunset": 1774288656
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 3.6,
+            "deg": 280
+        }
+    },
+    {
+        "_id": "London_2026032317",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-03-23T17:34:41.111000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1774286653,
+        "id": 2643743,
+        "main": {
+            "temp": 14.75,
+            "feels_like": 13.74,
+            "temp_min": 13.9,
+            "temp_max": 15.51,
+            "pressure": 1019,
+            "humidity": 56,
+            "sea_level": 1019,
+            "grnd_level": 1016
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1774245404,
+            "sunset": 1774289846
+        },
+        "timezone": 0,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 3.09,
+            "deg": 220
+        }
+    },
+    {
+        "_id": "New York_2026032317",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-03-23T17:34:42.185000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1774286640,
+        "id": 5128581,
+        "main": {
+            "temp": 4.53,
+            "feels_like": 0.23,
+            "temp_min": 3.42,
+            "temp_max": 5.54,
+            "pressure": 1011,
+            "humidity": 90,
+            "sea_level": 1011,
+            "grnd_level": 1010
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1774263267,
+            "sunset": 1774307438
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 701,
+                "main": "Mist",
+                "description": "mist",
+                "icon": "50d"
+            }
+        ],
+        "wind": {
+            "speed": 6.17,
+            "deg": 330
+        }
+    },
+    {
+        "_id": "Paris_2026032318",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-03-23T18:29:40.178000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1774289906,
+        "id": 2988507,
+        "main": {
+            "temp": 14.25,
+            "feels_like": 13.04,
+            "temp_min": 12.99,
+            "temp_max": 14.52,
+            "pressure": 1021,
+            "humidity": 50,
+            "sea_level": 1021,
+            "grnd_level": 1011
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1774244856,
+            "sunset": 1774289207
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "wind": {
+            "speed": 3.09,
+            "deg": 330
+        }
+    },
+    {
+        "_id": "Amsterdam_2026032318",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-03-23T18:29:41.248000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1774290307,
+        "id": 2759794,
+        "main": {
+            "temp": 9.59,
+            "feels_like": 7.97,
+            "temp_min": 8.8,
+            "temp_max": 10.56,
+            "pressure": 1020,
+            "humidity": 70,
+            "sea_level": 1020,
+            "grnd_level": 1020
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1774244187,
+            "sunset": 1774288656
+        },
+        "timezone": 3600,
+        "visibility": 9000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04n"
+            }
+        ],
+        "wind": {
+            "speed": 3.09,
+            "deg": 270
+        }
+    },
+    {
+        "_id": "London_2026032318",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-03-23T18:29:42.318000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1774290277,
+        "id": 2643743,
+        "main": {
+            "temp": 13.61,
+            "feels_like": 12.59,
+            "temp_min": 12.25,
+            "temp_max": 14.58,
+            "pressure": 1019,
+            "humidity": 60,
+            "sea_level": 1019,
+            "grnd_level": 1016
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1774245404,
+            "sunset": 1774289846
+        },
+        "timezone": 0,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04n"
+            }
+        ],
+        "wind": {
+            "speed": 4.12,
+            "deg": 220
+        }
+    },
+    {
+        "_id": "New York_2026032318",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-03-23T18:29:43.388000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1774289995,
+        "id": 5128581,
+        "main": {
+            "temp": 4.88,
+            "feels_like": 1.12,
+            "temp_min": 3.79,
+            "temp_max": 5.98,
+            "pressure": 1012,
+            "humidity": 88,
+            "sea_level": 1012,
+            "grnd_level": 1010
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1774263267,
+            "sunset": 1774307438
+        },
+        "timezone": -14400,
+        "visibility": 9656,
+        "weather": [
+            {
+                "id": 721,
+                "main": "Haze",
+                "description": "haze",
+                "icon": "50d"
+            }
+        ],
+        "wind": {
+            "speed": 5.14,
+            "deg": 360
+        }
+    },
+    {
+        "_id": "Paris_2026032517",
+        "base": "stations",
+        "clouds": {
+            "all": 40
+        },
+        "cod": 200,
+        "collected_at": "2026-03-25T17:21:16.756000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1774459091,
+        "id": 2988507,
+        "main": {
+            "temp": 8.6,
+            "feels_like": 4.66,
+            "temp_min": 7.43,
+            "temp_max": 9.49,
+            "pressure": 1013,
+            "humidity": 56,
+            "sea_level": 1013,
+            "grnd_level": 1004
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1774417401,
+            "sunset": 1774462186
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 802,
+                "main": "Clouds",
+                "description": "scattered clouds",
+                "icon": "03d"
+            }
+        ],
+        "wind": {
+            "speed": 8.75,
+            "deg": 300
+        }
+    },
+    {
+        "_id": "Amsterdam_2026032517",
+        "base": "stations",
+        "clouds": {
+            "all": 20
+        },
+        "cod": 200,
+        "collected_at": "2026-03-25T17:21:17.841000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1774458915,
+        "id": 2759794,
+        "main": {
+            "temp": 7.13,
+            "feels_like": 2.88,
+            "temp_min": 6.04,
+            "temp_max": 7.78,
+            "pressure": 1006,
+            "humidity": 70,
+            "sea_level": 1006,
+            "grnd_level": 1005
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1774416703,
+            "sunset": 1774461664
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02d"
+            }
+        ],
+        "wind": {
+            "speed": 8.23,
+            "deg": 310
+        }
+    },
+    {
+        "_id": "London_2026032517",
+        "base": "stations",
+        "clouds": {
+            "all": 75
+        },
+        "cod": 200,
+        "collected_at": "2026-03-25T17:21:18.947000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1774458670,
+        "id": 2643743,
+        "main": {
+            "temp": 6.82,
+            "feels_like": 2.32,
+            "temp_min": 5.57,
+            "temp_max": 7.36,
+            "pressure": 1012,
+            "humidity": 64,
+            "sea_level": 1012,
+            "grnd_level": 1008
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1774417928,
+            "sunset": 1774462846
+        },
+        "timezone": 0,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 8.75,
+            "deg": 310,
+            "gust": 17.49
+        }
+    },
+    {
+        "_id": "New York_2026032517",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-03-25T17:21:20.021000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1774458846,
+        "id": 5128581,
+        "main": {
+            "temp": 10.6,
+            "feels_like": 8.66,
+            "temp_min": 9.41,
+            "temp_max": 12.18,
+            "pressure": 1028,
+            "humidity": 36,
+            "sea_level": 1028,
+            "grnd_level": 1027
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1774435866,
+            "sunset": 1774480363
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 5.14,
+            "deg": 150,
+            "gust": 14.4
+        }
+    },
+    {
+        "_id": "Paris_2026032518",
+        "base": "stations",
+        "clouds": {
+            "all": 20
+        },
+        "cod": 200,
+        "collected_at": "2026-03-25T18:41:15.574000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1774463688,
+        "id": 2988507,
+        "main": {
+            "temp": 7.51,
+            "feels_like": 3.68,
+            "temp_min": 6.23,
+            "temp_max": 7.92,
+            "pressure": 1014,
+            "humidity": 59,
+            "sea_level": 1014,
+            "grnd_level": 1005
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1774417401,
+            "sunset": 1774462186
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02n"
+            }
+        ],
+        "wind": {
+            "speed": 7.2,
+            "deg": 290
+        }
+    },
+    {
+        "_id": "Amsterdam_2026032518",
+        "base": "stations",
+        "clouds": {
+            "all": 40
+        },
+        "cod": 200,
+        "collected_at": "2026-03-25T18:41:16.653000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1774463885,
+        "id": 2759794,
+        "main": {
+            "temp": 6.05,
+            "feels_like": 1.79,
+            "temp_min": 5.47,
+            "temp_max": 7.16,
+            "pressure": 1006,
+            "humidity": 70,
+            "sea_level": 1006,
+            "grnd_level": 1006
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1774416703,
+            "sunset": 1774461664
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 802,
+                "main": "Clouds",
+                "description": "scattered clouds",
+                "icon": "03n"
+            }
+        ],
+        "wind": {
+            "speed": 7.2,
+            "deg": 310
+        }
+    },
+    {
+        "_id": "London_2026032518",
+        "base": "stations",
+        "clouds": {
+            "all": 40
+        },
+        "cod": 200,
+        "collected_at": "2026-03-25T18:41:17.721000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1774463539,
+        "id": 2643743,
+        "main": {
+            "temp": 5.88,
+            "feels_like": 1.4,
+            "temp_min": 4.71,
+            "temp_max": 6.86,
+            "pressure": 1013,
+            "humidity": 67,
+            "sea_level": 1013,
+            "grnd_level": 1010
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1774417928,
+            "sunset": 1774462846
+        },
+        "timezone": 0,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 802,
+                "main": "Clouds",
+                "description": "scattered clouds",
+                "icon": "03n"
+            }
+        ],
+        "wind": {
+            "speed": 7.72,
+            "deg": 280,
+            "gust": 12.86
+        }
+    },
+    {
+        "_id": "New York_2026032518",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-03-25T18:41:18.794000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1774464060,
+        "id": 5128581,
+        "main": {
+            "temp": 10.92,
+            "feels_like": 9.11,
+            "temp_min": 8.86,
+            "temp_max": 13.44,
+            "pressure": 1026,
+            "humidity": 40,
+            "sea_level": 1026,
+            "grnd_level": 1024
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1774435866,
+            "sunset": 1774480363
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 4.63,
+            "deg": 160
+        }
+    },
+    {
+        "_id": "Paris_2026033117",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-03-31T17:36:02.184000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1774977832,
+        "id": 2988507,
+        "main": {
+            "temp": 10.09,
+            "feels_like": 9.4,
+            "temp_min": 9.28,
+            "temp_max": 11.16,
+            "pressure": 1029,
+            "humidity": 86,
+            "sea_level": 1029,
+            "grnd_level": 1019
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1774935040,
+            "sunset": 1774981121
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 3.09,
+            "deg": 330
+        }
+    },
+    {
+        "_id": "Amsterdam_2026033117",
+        "base": "stations",
+        "clouds": {
+            "all": 20
+        },
+        "cod": 200,
+        "collected_at": "2026-03-31T17:36:03.258000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1774978101,
+        "id": 2759794,
+        "main": {
+            "temp": 10.26,
+            "feels_like": 9.22,
+            "temp_min": 9.36,
+            "temp_max": 11.05,
+            "pressure": 1028,
+            "humidity": 72,
+            "sea_level": 1028,
+            "grnd_level": 1027
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1774934255,
+            "sunset": 1774980687
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02d"
+            }
+        ],
+        "wind": {
+            "speed": 4.63,
+            "deg": 310
+        }
+    },
+    {
+        "_id": "London_2026033117",
+        "base": "stations",
+        "clouds": {
+            "all": 40
+        },
+        "cod": 200,
+        "collected_at": "2026-03-31T17:36:04.332000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1774977721,
+        "id": 2643743,
+        "main": {
+            "temp": 16.65,
+            "feels_like": 16.04,
+            "temp_min": 15.7,
+            "temp_max": 18.06,
+            "pressure": 1028,
+            "humidity": 64,
+            "sea_level": 1028,
+            "grnd_level": 1023
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 268730,
+            "country": "GB",
+            "sunrise": 1774935502,
+            "sunset": 1774981846
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 802,
+                "main": "Clouds",
+                "description": "scattered clouds",
+                "icon": "03d"
+            }
+        ],
+        "wind": {
+            "speed": 1.03,
+            "deg": 0
+        }
+    },
+    {
+        "_id": "New York_2026033117",
+        "base": "stations",
+        "clouds": {
+            "all": 75
+        },
+        "cod": 200,
+        "collected_at": "2026-03-31T17:36:05.409000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1774978429,
+        "id": 5128581,
+        "main": {
+            "temp": 24.16,
+            "feels_like": 23.91,
+            "temp_min": 21.08,
+            "temp_max": 26.84,
+            "pressure": 1015,
+            "humidity": 49,
+            "sea_level": 1015,
+            "grnd_level": 1013
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1774953667,
+            "sunset": 1774999136
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 8.23,
+            "deg": 230,
+            "gust": 13.38
+        }
+    },
+    {
+        "_id": "Paris_2026040817",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-04-08T17:30:04.299000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1775668809,
+        "id": 2988507,
+        "main": {
+            "temp": 24.87,
+            "feels_like": 24.3,
+            "temp_min": 23.54,
+            "temp_max": 26.14,
+            "pressure": 1021,
+            "humidity": 34,
+            "sea_level": 1021,
+            "grnd_level": 1011
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1775625241,
+            "sunset": 1775673034
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 3.09,
+            "deg": 60
+        }
+    },
+    {
+        "_id": "Amsterdam_2026040817",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-04-08T17:30:05.567000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1775668743,
+        "id": 2759794,
+        "main": {
+            "temp": 18.02,
+            "feels_like": 17.08,
+            "temp_min": 17.14,
+            "temp_max": 18.95,
+            "pressure": 1023,
+            "humidity": 46,
+            "sea_level": 1023,
+            "grnd_level": 1024
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2041374,
+            "country": "NL",
+            "sunrise": 1775624339,
+            "sunset": 1775672716
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 3.6,
+            "deg": 160
+        }
+    },
+    {
+        "_id": "London_2026040817",
+        "base": "stations",
+        "clouds": {
+            "all": 46
+        },
+        "cod": 200,
+        "collected_at": "2026-04-08T17:30:06.643000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1775668840,
+        "id": 2643743,
+        "main": {
+            "temp": 24.82,
+            "feels_like": 24.4,
+            "temp_min": 23.94,
+            "temp_max": 25.3,
+            "pressure": 1021,
+            "humidity": 40,
+            "sea_level": 1021,
+            "grnd_level": 1017
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 268730,
+            "country": "GB",
+            "sunrise": 1775625618,
+            "sunset": 1775673845
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 802,
+                "main": "Clouds",
+                "description": "scattered clouds",
+                "icon": "03d"
+            }
+        ],
+        "wind": {
+            "speed": 2.24,
+            "deg": 243,
+            "gust": 4.02
+        }
+    },
+    {
+        "_id": "New York_2026040817",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-04-08T17:30:07.718000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1775669361,
+        "id": 5128581,
+        "main": {
+            "temp": 7.65,
+            "feels_like": 4.59,
+            "temp_min": 5.97,
+            "temp_max": 9.21,
+            "pressure": 1036,
+            "humidity": 31,
+            "sea_level": 1036,
+            "grnd_level": 1035
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1775644083,
+            "sunset": 1775690835
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 5.14,
+            "deg": 50,
+            "gust": 9.26
+        }
+    },
+    {
+        "_id": "Paris_2026040909",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-04-09T09:46:00.205000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1775727543,
+        "id": 2988507,
+        "main": {
+            "temp": 21.63,
+            "feels_like": 21.13,
+            "temp_min": 20.68,
+            "temp_max": 22.36,
+            "pressure": 1019,
+            "humidity": 49,
+            "sea_level": 1019,
+            "grnd_level": 1010
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1775711518,
+            "sunset": 1775759523
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 1.54,
+            "deg": 200
+        }
+    },
+    {
+        "_id": "Amsterdam_2026040909",
+        "base": "stations",
+        "clouds": {
+            "all": 97
+        },
+        "cod": 200,
+        "collected_at": "2026-04-09T09:46:01.428000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1775727736,
+        "id": 2759794,
+        "main": {
+            "temp": 15.73,
+            "feels_like": 14.82,
+            "temp_min": 14.92,
+            "temp_max": 16.67,
+            "pressure": 1018,
+            "humidity": 56,
+            "sea_level": 1018,
+            "grnd_level": 1018
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2046553,
+            "country": "NL",
+            "sunrise": 1775710602,
+            "sunset": 1775759220
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 2.24,
+            "deg": 308,
+            "gust": 2.24
+        }
+    },
+    {
+        "_id": "London_2026040909",
+        "base": "stations",
+        "clouds": {
+            "all": 99
+        },
+        "cod": 200,
+        "collected_at": "2026-04-09T09:46:02.502000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1775727721,
+        "id": 2643743,
+        "main": {
+            "temp": 19.35,
+            "feels_like": 18.96,
+            "temp_min": 18.06,
+            "temp_max": 20.14,
+            "pressure": 1018,
+            "humidity": 62,
+            "sea_level": 1018,
+            "grnd_level": 1013
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1775711884,
+            "sunset": 1775760345
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 3.09,
+            "deg": 260
+        }
+    },
+    {
+        "_id": "New York_2026040909",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-04-09T09:46:03.578000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1775727894,
+        "id": 5128581,
+        "main": {
+            "temp": 2.18,
+            "feels_like": 0.67,
+            "temp_min": 0.32,
+            "temp_max": 2.97,
+            "pressure": 1036,
+            "humidity": 81,
+            "sea_level": 1036,
+            "grnd_level": 1034
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1775730387,
+            "sunset": 1775777298
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "wind": {
+            "speed": 1.54,
+            "deg": 260
+        }
+    },
+    {
+        "_id": "Paris_2026041007",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-04-10T07:51:06.141000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1775806814,
+        "id": 2988507,
+        "main": {
+            "temp": 9.95,
+            "feels_like": 7.89,
+            "temp_min": 9.1,
+            "temp_max": 10.6,
+            "pressure": 1022,
+            "humidity": 68,
+            "sea_level": 1022,
+            "grnd_level": 1012
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1775797796,
+            "sunset": 1775846013
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 4.12,
+            "deg": 50
+        }
+    },
+    {
+        "_id": "Amsterdam_2026041007",
+        "base": "stations",
+        "clouds": {
+            "all": 75
+        },
+        "cod": 200,
+        "collected_at": "2026-04-10T07:51:07.361000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1775807036,
+        "id": 2759794,
+        "main": {
+            "temp": 8.7,
+            "feels_like": 6.12,
+            "temp_min": 7.69,
+            "temp_max": 9.43,
+            "pressure": 1019,
+            "humidity": 75,
+            "sea_level": 1019,
+            "grnd_level": 1019
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1775796865,
+            "sunset": 1775845724
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 4.63,
+            "deg": 320
+        }
+    },
+    {
+        "_id": "London_2026041007",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-04-10T07:51:08.436000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1775807156,
+        "id": 2643743,
+        "main": {
+            "temp": 7.79,
+            "feels_like": 7.79,
+            "temp_min": 6.94,
+            "temp_max": 8.49,
+            "pressure": 1021,
+            "humidity": 64,
+            "sea_level": 1021,
+            "grnd_level": 1017
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1775798151,
+            "sunset": 1775846845
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 1.03,
+            "deg": 0
+        }
+    },
+    {
+        "_id": "New York_2026041007",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-04-10T07:51:09.517000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1775806715,
+        "id": 5128581,
+        "main": {
+            "temp": 5.55,
+            "feels_like": 3.1,
+            "temp_min": 4.43,
+            "temp_max": 6.23,
+            "pressure": 1030,
+            "humidity": 84,
+            "sea_level": 1030,
+            "grnd_level": 1028
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1775816692,
+            "sunset": 1775863760
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04n"
+            }
+        ],
+        "wind": {
+            "speed": 3.09,
+            "deg": 210
+        }
+    },
+    {
+        "_id": "Paris_2026041010",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-04-10T10:29:37.822000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1775816355,
+        "id": 2988507,
+        "main": {
+            "temp": 12.59,
+            "feels_like": 11.26,
+            "temp_min": 11.75,
+            "temp_max": 13.92,
+            "pressure": 1021,
+            "humidity": 52,
+            "sea_level": 1021,
+            "grnd_level": 1011
+        },
+        "name": "Paris",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1775797796,
+            "sunset": 1775846013
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 2.57,
+            "deg": 0
+        }
+    },
+    {
+        "_id": "Amsterdam_2026041010",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-04-10T10:29:38.902000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1775816497,
+        "id": 2759794,
+        "main": {
+            "temp": 10.45,
+            "feels_like": 9.25,
+            "temp_min": 9.38,
+            "temp_max": 11.66,
+            "pressure": 1019,
+            "humidity": 65,
+            "sea_level": 1019,
+            "grnd_level": 1020
+        },
+        "name": "Amsterdam",
+        "sys": {
+            "type": 2,
+            "id": 2046553,
+            "country": "NL",
+            "sunrise": 1775796865,
+            "sunset": 1775845724
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 4.02,
+            "deg": 320,
+            "gust": 4.92
+        }
+    },
+    {
+        "_id": "London_2026041010",
+        "base": "stations",
+        "clouds": {
+            "all": 100
+        },
+        "cod": 200,
+        "collected_at": "2026-04-10T10:29:39.994000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1775816851,
+        "id": 2643743,
+        "main": {
+            "temp": 10.68,
+            "feels_like": 9.16,
+            "temp_min": 9.75,
+            "temp_max": 11.7,
+            "pressure": 1020,
+            "humidity": 52,
+            "sea_level": 1020,
+            "grnd_level": 1017
+        },
+        "name": "London",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1775798151,
+            "sunset": 1775846845
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 2.68,
+            "deg": 149,
+            "gust": 3.58
+        }
+    },
+    {
+        "_id": "New York_2026041010",
+        "base": "stations",
+        "clouds": {
+            "all": 20
+        },
+        "cod": 200,
+        "collected_at": "2026-04-10T10:29:41.078000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1775816691,
+        "id": 5128581,
+        "main": {
+            "temp": 4.65,
+            "feels_like": 2.9,
+            "temp_min": 3.3,
+            "temp_max": 5.55,
+            "pressure": 1028,
+            "humidity": 87,
+            "sea_level": 1028,
+            "grnd_level": 1027
+        },
+        "name": "New York",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1775816692,
+            "sunset": 1775863760
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02n"
+            }
+        ],
+        "wind": {
+            "speed": 2.06,
+            "deg": 250
+        }
+    },
+    {
+        "_id": "Paris_2026041517",
+        "base": "stations",
+        "clouds": {
+            "all": 75
+        },
+        "cod": 200,
+        "collected_at": "2026-04-15T17:23:03.292000",
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "dt": 1776273137,
+        "id": 2988507,
+        "main": {
+            "temp": 17.76,
+            "feels_like": 17.29,
+            "temp_min": 17.23,
+            "temp_max": 18.6,
+            "pressure": 1019,
+            "humidity": 65,
+            "sea_level": 1019,
+            "grnd_level": 1009
+        },
+        "name": "Paris",
+        "role": "departure",
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1776229195,
+            "sunset": 1776278460
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 4.12,
+            "deg": 220
+        }
+    },
+    {
+        "_id": "Amsterdam_2026041517",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-04-15T17:23:08.693000",
+        "coord": {
+            "lon": 4.8897,
+            "lat": 52.374
+        },
+        "dt": 1776273503,
+        "id": 2759794,
+        "main": {
+            "temp": 17.42,
+            "feels_like": 16.6,
+            "temp_min": 17.14,
+            "temp_max": 18.88,
+            "pressure": 1017,
+            "humidity": 53,
+            "sea_level": 1017,
+            "grnd_level": 1018
+        },
+        "name": "Amsterdam",
+        "role": "arrival",
+        "sys": {
+            "type": 2,
+            "id": 2101578,
+            "country": "NL",
+            "sunrise": 1776228191,
+            "sunset": 1776278245
+        },
+        "timezone": 7200,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 5.66,
+            "deg": 220
+        }
+    },
+    {
+        "_id": "London_2026041517",
+        "base": "stations",
+        "clouds": {
+            "all": 75
+        },
+        "cod": 200,
+        "collected_at": "2026-04-15T17:23:07.615000",
+        "coord": {
+            "lon": -0.1257,
+            "lat": 51.5085
+        },
+        "dt": 1776273384,
+        "id": 2643743,
+        "main": {
+            "temp": 14.85,
+            "feels_like": 14.32,
+            "temp_min": 13.98,
+            "temp_max": 15.72,
+            "pressure": 1014,
+            "humidity": 74,
+            "sea_level": 1014,
+            "grnd_level": 1010
+        },
+        "name": "London",
+        "role": "arrival",
+        "sys": {
+            "type": 2,
+            "id": 2075535,
+            "country": "GB",
+            "sunrise": 1776229496,
+            "sunset": 1776279347
+        },
+        "timezone": 3600,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
+            }
+        ],
+        "wind": {
+            "speed": 6.69,
+            "deg": 210
+        }
+    },
+    {
+        "_id": "New York_2026041517",
+        "base": "stations",
+        "clouds": {
+            "all": 0
+        },
+        "cod": 200,
+        "collected_at": "2026-04-15T17:23:06.521000",
+        "coord": {
+            "lon": -74.006,
+            "lat": 40.7143
+        },
+        "dt": 1776273404,
+        "id": 5128581,
+        "main": {
+            "temp": 28.72,
+            "feels_like": 29.3,
+            "temp_min": 26.97,
+            "temp_max": 30.73,
+            "pressure": 1011,
+            "humidity": 50,
+            "sea_level": 1011,
+            "grnd_level": 1010
+        },
+        "name": "New York",
+        "role": "departure",
+        "sys": {
+            "type": 1,
+            "id": 4610,
+            "country": "US",
+            "sunrise": 1776248225,
+            "sunset": 1776296074
+        },
+        "timezone": -14400,
+        "visibility": 10000,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "wind": {
+            "speed": 7.2,
+            "deg": 220,
+            "gust": 10.29
+        }
     }
 ]

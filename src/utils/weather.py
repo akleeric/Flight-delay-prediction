@@ -1,41 +1,34 @@
 import pandas as pd
-from datetime import timedelta
 from pymongo import MongoClient
 from config.settings import settings
 
 def find_closest_weather(city: str, target_dt):
     """
-    Retourne la description météo la plus proche dans les ±6h autour de target_dt.
+    Retourne le document météo le plus proche dans le temps pour une ville donnée.
+    Pas de fenêtre ±6h : on prend simplement la météo la plus proche.
     """
     if city is None or target_dt is None:
         return None, None
 
     try:
         client = MongoClient(settings.MONGO_URI)
-        db = client[settings.DB_PRODUCTION]
-        weather_col = db["weather_data"]
+        db = client[settings.DB_HISTORY]  # flight_delay_history_db
+        weather_col = db["weather_data"]  # clean_weather_data copié ici
 
-        start = target_dt - timedelta(hours=6)
-        end = target_dt + timedelta(hours=6)
-
-        docs_weather = list(weather_col.find({
-            "name": city,
-            "collected_at": {"$gte": start, "$lte": end}
-        }).sort("collected_at", 1))
+        # Récupérer toutes les entrées météo de la ville
+        docs_weather = list(weather_col.find({"name": city}))
 
         if not docs_weather:
             return None, None
 
+        # Trouver la météo la plus proche dans le temps
         def time_diff(doc):
             collected = pd.to_datetime(doc["collected_at"], utc=True)
             return abs(collected - target_dt)
 
         closest = min(docs_weather, key=time_diff)
 
-        description = closest["weather"][0]["description"]
-        date_used = closest["collected_at"]
-
-        return description, date_used
+        return closest, closest["collected_at"]
 
     except Exception:
         return None, None

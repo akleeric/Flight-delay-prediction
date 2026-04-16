@@ -7,6 +7,11 @@ import logging
 import time
 
 # --------------------------------------------------------------------
+# Import de la matrice IATA -> Ville (source unique)
+# --------------------------------------------------------------------
+from src.utils.iata import IATA_TO_CITY
+
+# --------------------------------------------------------------------
 # Logging
 # --------------------------------------------------------------------
 os.makedirs('logs', exist_ok=True)
@@ -29,7 +34,7 @@ class HistoricalFlightCollector:
     Collecteur historique basé sur le temps réel :
     - collecte uniquement les vols du jour
     - ne garde que ceux qui ont arrival.actual != None
-    - limite à 10 vols pour test
+    - limite à 50 vols pour test
     - stocke dans une base séparée : flight_delay_history_db
     """
 
@@ -37,13 +42,9 @@ class HistoricalFlightCollector:
         self.aviationstack_key = os.getenv('AVIATIONSTACK_API_KEY')
         self.weather_key = os.getenv('OPENWEATHER_API_KEY')
 
-        # -------------------------------
-        # BASE DE DONNÉES HISTORIQUE
-        # -------------------------------
         mongo_uri = os.getenv('MONGODB_URI')
         self.mongo_client = MongoClient(mongo_uri)
 
-        # ⚠️ NOUVELLE BASE DÉDIÉE
         self.db = self.mongo_client['flight_delay_history_db']
 
         if airports is None:
@@ -60,7 +61,7 @@ class HistoricalFlightCollector:
 
         for airport in self.airports:
             if len(all_flights) >= 50:
-                break  # Limite de test
+                break
 
             try:
                 response = requests.get(
@@ -76,18 +77,17 @@ class HistoricalFlightCollector:
                 if response.status_code == 200:
                     flights = response.json().get('data', [])
 
-                    # Filtrer : vols du jour + arrival.actual != None
                     for f in flights:
                         if len(all_flights) >= 50:
                             break
-                        #Vol du jour
+
                         if f.get('flight_date') != today_str:
                             continue
-                        # 2. Statut "landed" 
-                        if f.get('flight_status') != "landed": 
+
+                        if f.get('flight_status') != "landed":
                             continue
-                        # 3. arrival.actual doit exister et ne pas être null
-                        arrival = f.get('arrival')
+
+                        arrival = f.get('arrival', {})
                         if arrival.get('actual') is None or arrival.get('actual') == "":
                             continue
 
@@ -95,7 +95,7 @@ class HistoricalFlightCollector:
 
                     logger.info(f"{airport}: {len(all_flights)} vols finalisés cumulés")
 
-                else: 
+                else:
                     logger.warning(f"{airport}: HTTP {response.status_code}")
 
                 time.sleep(5)
@@ -103,10 +103,6 @@ class HistoricalFlightCollector:
             except Exception as e:
                 logger.error(f"{airport}: {e}")
 
-        # -------------------------------
-        # SAUVEGARDE DANS LA BASE HISTORIQUE
-        # -------------------------------
-        # collection = self.db['aviationstack_historical_flights']
         collection = self.db['aviationstack_historical_landed_flights']
         saved = 0
 
@@ -125,12 +121,13 @@ class HistoricalFlightCollector:
 
         logger.info(f"Historique: {saved} vols finalisés sauvegardés")
         return saved
-    
+
     def collect_weather(self, cities=['Paris', 'Amsterdam', 'London', 'New York']):
-        """Collecter données météo"""
-        self.db = self.mongo_client['flight_delay_db']
-        logger.info("Collecte Météo...")
-        collection = self.db['weather_data']
+        logger.info("Collecte Météo départ (liste statique)...")
+
+        weather_db = self.mongo_client['flight_delay_db']
+        collection = weather_db['clean_weather_data']
+
         saved = 0
         for city in cities:
             try:
@@ -147,26 +144,101 @@ class HistoricalFlightCollector:
                     data = response.json()
                     data['collected_at'] = datetime.now(timezone.utc)
                     data['_id'] = f"{city}_{datetime.now(timezone.utc).strftime('%Y%m%d%H')}"
+                    data['role'] = 'departure'
                     collection.update_one({'_id': data['_id']}, {'$set': data}, upsert=True)
                     saved += 1
-                    logger.info(f"{city}: {data['main']['temp']}°C")
+                    logger.info(f"[DEPARTURE] {city}: {data['main']['temp']}°C")
+                else:
+                    logger.warning(f"[DEPARTURE] {city}: HTTP {response.status_code}")
                 time.sleep(1)
 
             except Exception as e:
-                logger.error(f"{city}: {e}")
-        logger.info(f"Météo: {saved} villes sauvegardées")
+                logger.error(f"[DEPARTURE] {city}: {e}")
+
+        logger.info(f"Météo départ: {saved} villes sauvegardées")
+        return saved
+
+    def collect_arrival_weather_from_historical_flights(self):
+        logger.info("Collecte Météo d'arrivée à partir des vols historisés...")
+
+        history_db = self.mongo_client['flight_delay_history_db']
+        flights_collection = history_db['aviationstack_historical_landed_flights']
+
+        today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+
+        flights_cursor = flights_collection.find(
+            {"flight_date": today_str},
+            {"arrival.iata": 1}
+        )
+
+        arrival_iatas = set()
+        for f in flights_cursor:
+            arrival = f.get("arrival", {})
+            arr_iata = arrival.get("iata")
+            if arr_iata:
+                arrival_iatas.add(arr_iata)
+
+        logger.info(f"IATA d'arrivée trouvés pour aujourd'hui: {arrival_iatas}")
+
+        cities = set()
+        for iata in arrival_iatas:
+            city = IATA_TO_CITY.get(iata)
+            if city:
+                cities.add(city)
+            else:
+                logger.warning(f"Aucune ville trouvée pour l'IATA d'arrivée: {iata}")
+
+        if not cities:
+            logger.info("Aucune ville d'arrivée à collecter pour aujourd'hui.")
+            return 0
+
+        weather_db = self.mongo_client['flight_delay_db']
+        collection = weather_db['clean_weather_data']
+
+        saved = 0
+        for city in cities:
+            try:
+                response = requests.get(
+                    "http://api.openweathermap.org/data/2.5/weather",
+                    params={
+                        'q': city,
+                        'appid': self.weather_key,
+                        'units': 'metric'
+                    },
+                    timeout=10
+                )
+                if response.status_code == 200:
+                    data = response.json()
+                    data['collected_at'] = datetime.now(timezone.utc)
+                    data['_id'] = f"{city}_{datetime.now(timezone.utc).strftime('%Y%m%d%H')}"
+                    data['role'] = 'arrival'
+                    collection.update_one({'_id': data['_id']}, {'$set': data}, upsert=True)
+                    saved += 1
+                    logger.info(f"[ARRIVAL] {city}: {data['main']['temp']}°C")
+                else:
+                    logger.warning(f"[ARRIVAL] {city}: HTTP {response.status_code}")
+                time.sleep(1)
+
+            except Exception as e:
+                logger.error(f"[ARRIVAL] {city}: {e}")
+
+        logger.info(f"Météo d'arrivée: {saved} villes sauvegardées")
         return saved
 
     def run(self):
         logger.info("=" * 70)
-        logger.info("DÉBUT COLLECTE HISTORIQUE (TEST 10 vols)")
+        logger.info("DÉBUT COLLECTE HISTORIQUE (TEST 50 vols)")
         logger.info("=" * 70)
 
         count = self.collect_aviationstack_historical_like()
-        weather_count = self.collect_weather()
+        weather_dep_count = self.collect_weather()
+        weather_arr_count = self.collect_arrival_weather_from_historical_flights()
 
         logger.info("=" * 70)
-        logger.info(f"Collecte terminée : {count} vols finalisés ajoutés, Météo={weather_count}")
+        logger.info(
+            f"Collecte terminée : {count} vols finalisés ajoutés, "
+            f"Météo départ={weather_dep_count}, Météo arrivée={weather_arr_count}"
+        )
         logger.info("=" * 70)
 
     def close(self):

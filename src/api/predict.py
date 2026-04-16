@@ -1,39 +1,38 @@
 import pandas as pd
 from fastapi import HTTPException
-from src.api.schemas import FlightInput
+from src.api.schemas import FlightBatchInput
 from src.ml.model import load_model
 
-# Chargement du modèle une seule fois au démarrage de l'API
+# Chargement du modèle une seule fois
 try:
     model = load_model()
 except Exception as e:
     raise RuntimeError(f"Impossible de charger le modèle ML : {e}")
 
 
-def predict_delay(data: FlightInput):
+def predict_batch(data: FlightBatchInput):
     """
-    Reçoit un FlightInput, le transforme en DataFrame,
-    exécute la prédiction et renvoie le retard estimé.
+    Reçoit un batch de vols déjà featurés,
+    exécute la prédiction pour chacun,
+    et renvoie une liste de retards prédits.
     """
 
     try:
         # Conversion en DataFrame
-        df = pd.DataFrame([data.dict()])
+        df = pd.DataFrame([flight.dict() for flight in data.flights])
 
-        # Prédiction brute
-        prediction = model.predict(df)[0]
+        # Prédictions
+        preds = model.predict(df)
 
-        # 🔥 Correction métier : un retard ne peut pas être négatif
-        if prediction < 0:
-            prediction = 0.0
+        # Correction métier : pas de retard négatif
+        preds = [float(p) if p > 0 else 0.0 for p in preds]
 
-        # Conversion float pour JSON
         return {
-            "predicted_delay": float(prediction)
+            "predictions": preds
         }
 
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail=f"Erreur lors de la prédiction : {str(e)}"
+            detail=f"Erreur lors de la prédiction batch : {str(e)}"
         )

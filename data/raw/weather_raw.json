@@ -1,45 +1,243 @@
-{
-    "coord": {
-        "lon": 2.3488,
-        "lat": 48.8534
+[
+    {
+        "coord": {
+            "lon": 2.159,
+            "lat": 41.3888
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 19.64,
+            "feels_like": 18.91,
+            "temp_min": 18.64,
+            "temp_max": 21.77,
+            "pressure": 1019,
+            "humidity": 48,
+            "sea_level": 1019,
+            "grnd_level": 1012
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 7.72,
+            "deg": 230
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1776362491,
+        "sys": {
+            "type": 2,
+            "id": 2032131,
+            "country": "ES",
+            "sunrise": 1776316219,
+            "sunset": 1776364299
+        },
+        "timezone": 7200,
+        "id": 3128760,
+        "name": "Barcelona",
+        "cod": 200,
+        "_id": "Barcelona_2026041618",
+        "city": "Barcelona",
+        "collected_at": "2026-04-16T18:11:12.605411+00:00"
     },
-    "weather": [
-        {
-            "id": 800,
-            "main": "Clear",
-            "description": "clear sky",
-            "icon": "01d"
-        }
-    ],
-    "base": "stations",
-    "main": {
-        "temp": 24.87,
-        "feels_like": 24.3,
-        "temp_min": 23.54,
-        "temp_max": 26.14,
-        "pressure": 1021,
-        "humidity": 34,
-        "sea_level": 1021,
-        "grnd_level": 1011
+    {
+        "coord": {
+            "lon": -85.1647,
+            "lat": 34.257
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 28.85,
+            "feels_like": 28.82,
+            "temp_min": 27.22,
+            "temp_max": 30,
+            "pressure": 1019,
+            "humidity": 44,
+            "sea_level": 1019,
+            "grnd_level": 992
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 2.68,
+            "deg": 193,
+            "gust": 3.58
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1776362841,
+        "sys": {
+            "type": 2,
+            "id": 2038061,
+            "country": "US",
+            "sunrise": 1776337680,
+            "sunset": 1776384746
+        },
+        "timezone": -14400,
+        "id": 4219762,
+        "name": "Rome",
+        "cod": 200,
+        "_id": "Rome_2026041618",
+        "city": "Rome",
+        "collected_at": "2026-04-16T18:11:13.072852+00:00"
     },
-    "visibility": 10000,
-    "wind": {
-        "speed": 3.09,
-        "deg": 60
+    {
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 17.44,
+            "feels_like": 16.52,
+            "temp_min": 16.77,
+            "temp_max": 18.1,
+            "pressure": 1021,
+            "humidity": 49,
+            "sea_level": 1021,
+            "grnd_level": 1011
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 2.57,
+            "deg": 210
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1776362919,
+        "sys": {
+            "type": 2,
+            "id": 2012208,
+            "country": "FR",
+            "sunrise": 1776315477,
+            "sunset": 1776364949
+        },
+        "timezone": 7200,
+        "id": 2988507,
+        "name": "Paris",
+        "cod": 200,
+        "_id": "Paris_2026041618",
+        "city": "Paris",
+        "collected_at": "2026-04-16T18:11:13.510740+00:00"
     },
-    "clouds": {
-        "all": 0
+    {
+        "coord": {
+            "lon": -4.0197,
+            "lat": 5.3094
+        },
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 29.98,
+            "feels_like": 36.98,
+            "temp_min": 29.98,
+            "temp_max": 29.98,
+            "pressure": 1005,
+            "humidity": 79,
+            "sea_level": 1005,
+            "grnd_level": 1005
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 5.66,
+            "deg": 230
+        },
+        "clouds": {
+            "all": 20
+        },
+        "dt": 1776362623,
+        "sys": {
+            "type": 1,
+            "id": 1162,
+            "country": "CI",
+            "sunrise": 1776319711,
+            "sunset": 1776363772
+        },
+        "timezone": 0,
+        "id": 2293538,
+        "name": "Abidjan",
+        "cod": 200,
+        "_id": "Abidjan_2026041618",
+        "city": "Abidjan",
+        "collected_at": "2026-04-16T18:11:14.019485+00:00"
     },
-    "dt": 1775668809,
-    "sys": {
-        "type": 2,
-        "id": 2012208,
-        "country": "FR",
-        "sunrise": 1775625241,
-        "sunset": 1775673034
-    },
-    "timezone": 7200,
-    "id": 2988507,
-    "name": "Paris",
-    "cod": 200
-}
+    {
+        "coord": {
+            "lon": 28.9833,
+            "lat": 41.0351
+        },
+        "weather": [
+            {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 11.17,
+            "feels_like": 10.27,
+            "temp_min": 10.09,
+            "temp_max": 11.62,
+            "pressure": 1018,
+            "humidity": 74,
+            "sea_level": 1018,
+            "grnd_level": 1010
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 8.75,
+            "deg": 30
+        },
+        "clouds": {
+            "all": 75
+        },
+        "dt": 1776362399,
+        "sys": {
+            "type": 2,
+            "id": 2108371,
+            "country": "TR",
+            "sunrise": 1776309817,
+            "sunset": 1776357827
+        },
+        "timezone": 10800,
+        "id": 745042,
+        "name": "Istanbul",
+        "cod": 200,
+        "_id": "Istanbul_2026041618",
+        "city": "Istanbul",
+        "collected_at": "2026-04-16T18:11:14.421534+00:00"
+    }
+]

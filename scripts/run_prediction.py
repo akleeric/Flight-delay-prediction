@@ -1,38 +1,50 @@
+import json
 import requests
-import os
-
 from src.collectors.prediction_collector import PredictionCollector
-from src.utils.transformers import build_features
-from src.utils.storage import save_processed
-from config.settings import settings
 
 
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+API_URL = "http://127.0.0.1:8000/predict"
 
 
 def run_prediction():
     collector = PredictionCollector()
 
-    # 1. Récupérer un vol réel
-    flight = collector.get_one_flight_from_cdg()
-    if not flight:
-        print("❌ Aucun vol trouvé au départ de CDG")
+    print("✈️ Récupération des vols actifs/scheduled...")
+    flights = collector.get_live_flights()
+    print(f"➡️ {len(flights)} vols récupérés")
+
+    print("🌦️ Récupération des météos...")
+    weather = collector.collect_weather_for_flights(flights)
+    print(f"➡️ {len(weather)} villes météo récupérées")
+
+    print("📁 Données brutes sauvegardées dans data/raw/")
+
+    print("🧮 Construction des features pour la prédiction...")
+    features = collector.build_processed_features(flights, weather)
+    print(f"➡️ {len(features)} lignes de features générées")
+
+    print("📁 Données transformées sauvegardées dans data/processed/prediction_features.json")
+
+    # ---------------------------------------------------------
+    # 4. Appel API pour obtenir les prédictions
+    # ---------------------------------------------------------
+    print("🔮 Envoi des features à l’API pour prédiction...")
+
+    payload = {"flights": features}
+
+    try:
+        response = requests.post(API_URL, json=payload, timeout=10)
+        response.raise_for_status()
+        predictions = response.json().get("predictions", [])
+    except Exception as e:
+        print(f"❌ Erreur lors de l'appel API : {e}")
         return
 
-    # 2. Récupérer la météo
-    weather = collector.get_weather_paris()
+    print("📊 Prédictions reçues :")
+    for idx, pred in enumerate(predictions):
+        print(f"  - Vol {idx+1}: retard estimé = {pred:.2f} minutes")
 
-    # 3. Transformer en features
-    features = build_features(flight, weather)
-
-    # 🔥 Sauvegarde des features transformées
-    save_processed("features_for_api", features)
-
-    print("Features envoyées :", features)
-
-    # 4. Appeler ton API FastAPI
-    response = requests.post(f"{settings.API_URL}/predict", json=features)
-    print("Prediction:", response.json())
+    print("✅ Pipeline complète terminée.")
 
 
 if __name__ == "__main__":
