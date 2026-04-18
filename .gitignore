@@ -45,7 +45,7 @@ Thumbs.db
 #*.sqlite
 
 # Models
-*.pkl
+#*.pkl
 *.joblib
 
 # MongoDB

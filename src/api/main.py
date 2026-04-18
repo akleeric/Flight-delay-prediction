@@ -11,8 +11,14 @@ app = FastAPI(
     version="2.0.0"
 )
 
-DATA_RAW = "data/raw"
-DATA_PROCESSED = "data/processed"
+# ---------------------------------------------------------
+# Détection automatique de la racine du projet
+# ---------------------------------------------------------
+# __file__ = src/api/main.py
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+DATA_RAW = os.path.join(PROJECT_ROOT, "data", "raw")
+DATA_PROCESSED = os.path.join(PROJECT_ROOT, "data", "processed")
 
 
 @app.get("/")
@@ -68,8 +74,22 @@ def run_collector():
     et la transformation processed.
     """
     try:
-        subprocess.run(["python", "scripts/run_prediction.py"], check=True)
+        script_path = os.path.join(PROJECT_ROOT, "scripts", "run_collectors.py")
+
+        result = subprocess.run(
+            ["python", script_path],
+            capture_output=True,
+            text=True
+        )
+
+        if result.returncode != 0:
+            raise HTTPException(
+                500,
+                f"Erreur lors de la collecte : {result.stderr}"
+            )
+
         return {"status": "OK", "message": "Collecte exécutée avec succès"}
+
     except Exception as e:
         raise HTTPException(500, f"Erreur lors de la collecte : {e}")
 
@@ -83,7 +103,54 @@ def run_training():
     Lance l'entraînement du modèle ML.
     """
     try:
-        subprocess.run(["python", "scripts/run_training.py"], check=True)
+        script_path = os.path.join(PROJECT_ROOT, "scripts", "run_training.py")
+
+        result = subprocess.run(
+            ["python", script_path],
+            capture_output=True,
+            text=True
+        )
+
+        if result.returncode != 0:
+            raise HTTPException(
+                500,
+                f"Erreur lors du training : {result.stderr}"
+            )
+
         return {"status": "OK", "message": "Training exécuté avec succès"}
+
     except Exception as e:
         raise HTTPException(500, f"Erreur lors du training : {e}")
+
+# ---------------------------------------------------------
+# 6. Lancer la prédiction live (collecte + features + prédiction)
+# ---------------------------------------------------------
+@app.post("/run/live_prediction")
+def run_live_prediction():
+    """
+    Collecte les vols live + météo, génère les features,
+    appelle l'API /predict et renvoie les prédictions.
+    """
+    try:
+        script_path = os.path.join(PROJECT_ROOT, "scripts", "run_live_prediction.py")
+
+        result = subprocess.run(
+            ["python", script_path],
+            capture_output=True,
+            text=True
+        )
+
+        if result.returncode != 0:
+            raise HTTPException(
+                500,
+                f"Erreur lors de la prédiction live : {result.stderr}"
+            )
+
+        return {
+            "status": "OK",
+            "message": "Prédiction live exécutée avec succès",
+            "output": result.stdout
+        }
+
+    except Exception as e:
+        raise HTTPException(500, f"Erreur lors de la prédiction live : {e}")
