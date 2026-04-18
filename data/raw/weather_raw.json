@@ -1,56 +1,56 @@
 [
     {
         "coord": {
-            "lon": 2.3488,
-            "lat": 48.8534
+            "lon": -74.006,
+            "lat": 40.7143
         },
         "weather": [
             {
-                "id": 800,
-                "main": "Clear",
-                "description": "clear sky",
-                "icon": "01d"
+                "id": 741,
+                "main": "Fog",
+                "description": "fog",
+                "icon": "50d"
             }
         ],
         "base": "stations",
         "main": {
-            "temp": 19.77,
-            "feels_like": 19.11,
-            "temp_min": 19.1,
-            "temp_max": 20.28,
-            "pressure": 1021,
-            "humidity": 50,
-            "sea_level": 1021,
-            "grnd_level": 1012
+            "temp": 11.91,
+            "feels_like": 11.58,
+            "temp_min": 10.54,
+            "temp_max": 12.97,
+            "pressure": 1017,
+            "humidity": 93,
+            "sea_level": 1017,
+            "grnd_level": 1016
         },
         "visibility": 10000,
         "wind": {
             "speed": 2.57,
-            "deg": 240
+            "deg": 60
         },
         "clouds": {
             "all": 0
         },
-        "dt": 1776506698,
+        "dt": 1776508172,
         "sys": {
             "type": 2,
-            "id": 2012208,
-            "country": "FR",
-            "sunrise": 1776488044,
-            "sunset": 1776537929
+            "id": 2037026,
+            "country": "US",
+            "sunrise": 1776507153,
+            "sunset": 1776555464
         },
-        "timezone": 7200,
-        "id": 2988507,
-        "name": "Paris",
+        "timezone": -14400,
+        "id": 5128581,
+        "name": "New York",
         "cod": 200,
-        "_id": "Paris_2026041810",
-        "city": "Paris",
-        "collected_at": "2026-04-18T10:12:41.224629+00:00"
+        "_id": "New York_2026041810",
+        "city": "New York",
+        "collected_at": "2026-04-18T10:35:28.113286+00:00"
     },
     {
         "coord": {
-            "lon": 3.042,
-            "lat": 36.7525
+            "lon": 54.3667,
+            "lat": 24.4667
         },
         "weather": [
             {
@@ -62,86 +62,37 @@
         ],
         "base": "stations",
         "main": {
-            "temp": 17.68,
-            "feels_like": 16.57,
-            "temp_min": 17.68,
-            "temp_max": 18.9,
-            "pressure": 1020,
-            "humidity": 41,
-            "sea_level": 1020,
-            "grnd_level": 1014
+            "temp": 25.44,
+            "feels_like": 25.63,
+            "temp_min": 25.44,
+            "temp_max": 25.44,
+            "pressure": 1011,
+            "humidity": 61,
+            "sea_level": 1011,
+            "grnd_level": 1011
         },
         "visibility": 10000,
         "wind": {
-            "speed": 2.06,
-            "deg": 30
+            "speed": 5,
+            "deg": 288,
+            "gust": 7.23
         },
         "clouds": {
             "all": 0
         },
-        "dt": 1776506792,
+        "dt": 1776508310,
         "sys": {
-            "type": 2,
-            "id": 2096234,
-            "country": "DZ",
-            "sunrise": 1776488999,
-            "sunset": 1776536641
+            "country": "AE",
+            "sunrise": 1776477491,
+            "sunset": 1776523517
         },
-        "timezone": 3600,
-        "id": 2507480,
-        "name": "Algiers",
+        "timezone": 14400,
+        "id": 292968,
+        "name": "Abu Dhabi",
         "cod": 200,
-        "_id": "Algiers_2026041810",
-        "city": "Algiers",
-        "collected_at": "2026-04-18T10:12:41.630801+00:00"
-    },
-    {
-        "coord": {
-            "lon": 23.3242,
-            "lat": 42.6975
-        },
-        "weather": [
-            {
-                "id": 803,
-                "main": "Clouds",
-                "description": "broken clouds",
-                "icon": "04d"
-            }
-        ],
-        "base": "stations",
-        "main": {
-            "temp": 15.99,
-            "feels_like": 14.95,
-            "temp_min": 14.83,
-            "temp_max": 15.99,
-            "pressure": 1015,
-            "humidity": 50,
-            "sea_level": 1015,
-            "grnd_level": 936
-        },
-        "visibility": 10000,
-        "wind": {
-            "speed": 3.09,
-            "deg": 0
-        },
-        "clouds": {
-            "all": 75
-        },
-        "dt": 1776506976,
-        "sys": {
-            "type": 2,
-            "id": 2104664,
-            "country": "BG",
-            "sunrise": 1776483644,
-            "sunset": 1776532261
-        },
-        "timezone": 10800,
-        "id": 727011,
-        "name": "Sofia",
-        "cod": 200,
-        "_id": "Sofia_2026041810",
-        "city": "Sofia",
-        "collected_at": "2026-04-18T10:12:42.003257+00:00"
+        "_id": "Abu Dhabi_2026041810",
+        "city": "Abu Dhabi",
+        "collected_at": "2026-04-18T10:35:28.652277+00:00"
     },
     {
         "coord": {
@@ -158,24 +109,25 @@
         ],
         "base": "stations",
         "main": {
-            "temp": 10.13,
-            "feels_like": 8.48,
-            "temp_min": 8.92,
-            "temp_max": 12.47,
-            "pressure": 1022,
-            "humidity": 49,
-            "sea_level": 1022,
+            "temp": 9.25,
+            "feels_like": 7.07,
+            "temp_min": 8.2,
+            "temp_max": 12.71,
+            "pressure": 1023,
+            "humidity": 52,
+            "sea_level": 1023,
             "grnd_level": 1022
         },
         "visibility": 10000,
         "wind": {
-            "speed": 4.63,
-            "deg": 60
+            "speed": 4.02,
+            "deg": 150,
+            "gust": 6.26
         },
         "clouds": {
             "all": 0
         },
-        "dt": 1776506995,
+        "dt": 1776508279,
         "sys": {
             "type": 2,
             "id": 20457,
@@ -189,54 +141,200 @@
         "cod": 200,
         "_id": "Helsinki_2026041810",
         "city": "Helsinki",
-        "collected_at": "2026-04-18T10:12:42.374531+00:00"
+        "collected_at": "2026-04-18T10:35:29.083995+00:00"
     },
     {
         "coord": {
-            "lon": -82.4543,
-            "lat": 27.0998
+            "lon": -5.9761,
+            "lat": 37.3824
         },
         "weather": [
             {
                 "id": 800,
                 "main": "Clear",
                 "description": "clear sky",
-                "icon": "01n"
+                "icon": "01d"
             }
         ],
         "base": "stations",
         "main": {
-            "temp": 19.11,
-            "feels_like": 19.45,
-            "temp_min": 18.35,
-            "temp_max": 20.56,
-            "pressure": 1016,
-            "humidity": 91,
-            "sea_level": 1016,
-            "grnd_level": 1015
+            "temp": 25.4,
+            "feels_like": 24.94,
+            "temp_min": 24.06,
+            "temp_max": 26.11,
+            "pressure": 1018,
+            "humidity": 36,
+            "sea_level": 1018,
+            "grnd_level": 1014
         },
         "visibility": 10000,
         "wind": {
-            "speed": 3.09,
-            "deg": 60
+            "speed": 2.06,
+            "deg": 40
         },
         "clouds": {
             "all": 0
         },
-        "dt": 1776506978,
+        "dt": 1776508475,
+        "sys": {
+            "type": 2,
+            "id": 2011488,
+            "country": "ES",
+            "sunrise": 1776491113,
+            "sunset": 1776538855
+        },
+        "timezone": 7200,
+        "id": 2510911,
+        "name": "Seville",
+        "cod": 200,
+        "_id": "Seville_2026041810",
+        "city": "Seville",
+        "collected_at": "2026-04-18T10:35:29.470288+00:00"
+    },
+    {
+        "coord": {
+            "lon": 2.3488,
+            "lat": 48.8534
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 20.39,
+            "feels_like": 19.76,
+            "temp_min": 19.1,
+            "temp_max": 21.1,
+            "pressure": 1021,
+            "humidity": 49,
+            "sea_level": 1021,
+            "grnd_level": 1012
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 2.06,
+            "deg": 200
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1776508410,
         "sys": {
             "type": 1,
-            "id": 6184,
-            "country": "US",
-            "sunrise": 1776510152,
-            "sunset": 1776556520
+            "id": 6550,
+            "country": "FR",
+            "sunrise": 1776488044,
+            "sunset": 1776537929
+        },
+        "timezone": 7200,
+        "id": 2988507,
+        "name": "Paris",
+        "cod": 200,
+        "_id": "Paris_2026041810",
+        "city": "Paris",
+        "collected_at": "2026-04-18T10:35:29.853696+00:00"
+    },
+    {
+        "coord": {
+            "lon": 23.7162,
+            "lat": 37.9795
+        },
+        "weather": [
+            {
+                "id": 801,
+                "main": "Clouds",
+                "description": "few clouds",
+                "icon": "02d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 20.98,
+            "feels_like": 19.94,
+            "temp_min": 20.06,
+            "temp_max": 21.78,
+            "pressure": 1010,
+            "humidity": 31,
+            "sea_level": 1010,
+            "grnd_level": 987
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 7.2,
+            "deg": 360,
+            "gust": 12.35
+        },
+        "clouds": {
+            "all": 20
+        },
+        "dt": 1776508144,
+        "sys": {
+            "type": 2,
+            "id": 2005332,
+            "country": "GR",
+            "sunrise": 1776483947,
+            "sunset": 1776531770
+        },
+        "timezone": 10800,
+        "id": 264371,
+        "name": "Athens",
+        "cod": 200,
+        "_id": "Athens_2026041810",
+        "city": "Athens",
+        "collected_at": "2026-04-18T10:35:30.263760+00:00"
+    },
+    {
+        "coord": {
+            "lon": -71.2145,
+            "lat": 46.8123
+        },
+        "weather": [
+            {
+                "id": 802,
+                "main": "Clouds",
+                "description": "scattered clouds",
+                "icon": "03d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 4,
+            "feels_like": -1.43,
+            "temp_min": 3.45,
+            "temp_max": 5.08,
+            "pressure": 1020,
+            "humidity": 86,
+            "sea_level": 1020,
+            "grnd_level": 1006
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 8.94,
+            "deg": 78,
+            "gust": 10.73
+        },
+        "clouds": {
+            "all": 40
+        },
+        "dt": 1776508511,
+        "sys": {
+            "type": 2,
+            "id": 2100552,
+            "country": "CA",
+            "sunrise": 1776505902,
+            "sunset": 1776555375
         },
         "timezone": -14400,
-        "id": 4176380,
-        "name": "Venice",
+        "id": 6325494,
+        "name": "Qu\u00e9bec",
         "cod": 200,
-        "_id": "Venice_2026041810",
-        "city": "Venice",
-        "collected_at": "2026-04-18T10:12:42.754731+00:00"
+        "_id": "Quebec_2026041810",
+        "city": "Quebec",
+        "collected_at": "2026-04-18T10:35:30.646286+00:00"
     }
 ]
