@@ -1,5 +1,17 @@
+import os
+import sys
 import json
 import requests
+
+# ---------------------------------------------------------
+# 1. Ajouter la racine du projet au PYTHONPATH
+# ---------------------------------------------------------
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, PROJECT_ROOT)
+
+# ---------------------------------------------------------
+# 2. Imports internes (après le sys.path)
+# ---------------------------------------------------------
 from src.collectors.prediction_collector import PredictionCollector
 
 
@@ -17,17 +29,10 @@ def run_prediction():
     weather = collector.collect_weather_for_flights(flights)
     print(f"➡️ {len(weather)} villes météo récupérées")
 
-    print("📁 Données brutes sauvegardées dans data/raw/")
-
     print("🧮 Construction des features pour la prédiction...")
     features = collector.build_processed_features(flights, weather)
     print(f"➡️ {len(features)} lignes de features générées")
 
-    print("📁 Données transformées sauvegardées dans data/processed/prediction_features.json")
-
-    # ---------------------------------------------------------
-    # 4. Appel API pour obtenir les prédictions
-    # ---------------------------------------------------------
     print("🔮 Envoi des features à l’API pour prédiction...")
 
     payload = {"flights": features}
