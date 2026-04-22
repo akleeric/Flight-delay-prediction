@@ -48,7 +48,7 @@ class HistoricalFlightCollector:
         self.db = self.mongo_client['flight_delay_history_db']
 
         if airports is None:
-            airports = ['CDG', 'ORY', 'AMS', 'LHR', 'JFK']
+            airports = ['CDG', 'ORY', 'AMS', 'LHR', 'MAD', 'FRA', 'MUC', 'BCN', 'FCO', 'CPH']
         self.airports = airports
 
         logger.info("Collecteur historique initialisé (base séparée)")
@@ -78,7 +78,7 @@ class HistoricalFlightCollector:
                     flights = response.json().get('data', [])
 
                     for f in flights:
-                        if len(all_flights) >= 50:
+                        if len(all_flights) >= 100:
                             break
 
                         if f.get('flight_date') != today_str:
@@ -122,11 +122,11 @@ class HistoricalFlightCollector:
         logger.info(f"Historique: {saved} vols finalisés sauvegardés")
         return saved
 
-    def collect_weather(self, cities=['Paris', 'Amsterdam', 'London', 'New York']):
+    def collect_weather(self, cities=['Paris', 'Amsterdam', 'London', 'Madrid', 'Frankfurt', 'Munich', 'Barcelona', 'Rome', 'Copenhagen']):
         logger.info("Collecte Météo départ (liste statique)...")
 
-        weather_db = self.mongo_client['flight_delay_db']
-        collection = weather_db['clean_weather_data']
+        weather_db = self.mongo_client['flight_delay_history_db']
+        collection = weather_db['weather_data']
 
         saved = 0
         for city in cities:
@@ -186,14 +186,18 @@ class HistoricalFlightCollector:
             if city:
                 cities.add(city)
             else:
-                logger.warning(f"Aucune ville trouvée pour l'IATA d'arrivée: {iata}")
+                logger.warning(
+                    f"⚠️ IATA inconnu dans iata.py : {iata} — "
+                    f"ajoute-le dans IATA_TO_CITY pour éviter de perdre des vols."
+                )
+
 
         if not cities:
             logger.info("Aucune ville d'arrivée à collecter pour aujourd'hui.")
             return 0
 
-        weather_db = self.mongo_client['flight_delay_db']
-        collection = weather_db['clean_weather_data']
+        weather_db = self.mongo_client['flight_delay_history_db']
+        collection = weather_db['weather_data']
 
         saved = 0
         for city in cities:
@@ -227,7 +231,7 @@ class HistoricalFlightCollector:
 
     def run(self):
         logger.info("=" * 70)
-        logger.info("DÉBUT COLLECTE HISTORIQUE (TEST 50 vols)")
+        logger.info("DÉBUT COLLECTE HISTORIQUE")
         logger.info("=" * 70)
 
         count = self.collect_aviationstack_historical_like()

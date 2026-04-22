@@ -1275,4 +1275,165 @@ IATA_TO_CITY = {
 # --- Palaos ---
     "ROR": "Koror",
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Les rajouts
+    "SVO": "Moscow",
+    "DME": "Moscow",
+    "VKO": "Moscow",
+    "LED": "Saint Petersburg",
+    "KRR": "Krasnodar",
+    "ROV": "Rostov-on-Don",
+    "SVX": "Yekaterinburg",
+    "KUF": "Samara",
+    "KZN": "Kazan",
+    "UFA": "Ufa",
+    "OMS": "Omsk",
+    "OVB": "Novosibirsk",
+    "KJA": "Krasnoyarsk",
+    "IKT": "Irkutsk",
+    "VVO": "Vladivostok",
+    "KHV": "Khabarovsk",
+    "AER": "Sochi",
+    "MRV": "Mineralnye Vody",
+    "NAL": "Nalchik",
+    "MCX": "Makhachkala",
+
+    "JED": "Jeddah",
+    "RUH": "Riyadh",
+    "DMM": "Dammam",
+    "MED": "Medina",
+    "TIF": "Taif",
+    "GIZ": "Jizan",
+    "TUU": "Tabuk",
+    "ELQ": "Buraidah",
+    "YNB": "Yanbu",
+    "ABT": "Al Baha",
+
+    "HKG": "Hong Kong",
+    "MFM": "Macau",
+    "BKK": "Bangkok",
+    "DMK": "Bangkok",
+    "HKT": "Phuket",
+    "CNX": "Chiang Mai",
+    "KUL": "Kuala Lumpur",
+    "PEN": "Penang",
+    "LGK": "Langkawi",
+    "SIN": "Singapore",
+    "CGK": "Jakarta",
+    "DPS": "Denpasar",
+    "SUB": "Surabaya",
+    "SGN": "Ho Chi Minh City",
+    "HAN": "Hanoi",
+    "DAD": "Da Nang",
+    "PNH": "Phnom Penh",
+    "REP": "Siem Reap",
+    "VTE": "Vientiane",
+    "RGN": "Yangon",
+
+    "DXB": "Dubai",
+    "DWC": "Dubai",
+    "AUH": "Abu Dhabi",
+    "SHJ": "Sharjah",
+    "DOH": "Doha",
+    "BAH": "Manama",
+    "KWI": "Kuwait City",
+    "MCT": "Muscat",
+    "SLL": "Salalah",
+
+    "JNB": "Johannesburg",
+    "CPT": "Cape Town",
+    "DUR": "Durban",
+    "PLZ": "Port Elizabeth",
+    "WDH": "Windhoek",
+    "MPM": "Maputo",
+    "NBO": "Nairobi",
+    "MBA": "Mombasa",
+    "ADD": "Addis Ababa",
+    "KGL": "Kigali",
+    "EBB": "Entebbe",
+    "DAR": "Dar es Salaam",
+    "ZNZ": "Zanzibar",
+    "HRE": "Harare",
+    "LUN": "Lusaka",
+    "LOS": "Lagos",
+    "ACC": "Accra",
+    "ABJ": "Abidjan",
+    "DKR": "Dakar",
+    "CMN": "Casablanca",
+
+    "LIM": "Lima",
+    "BOG": "Bogota",
+    "MDE": "Medellin",
+    "CLO": "Cali",
+    "UIO": "Quito",
+    "GYE": "Guayaquil",
+    "SCL": "Santiago",
+    "GRU": "Sao Paulo",
+    "CGH": "Sao Paulo",
+    "GIG": "Rio de Janeiro",
+    "SDU": "Rio de Janeiro",
+    "EZE": "Buenos Aires",
+    "AEP": "Buenos Aires",
+    "MVD": "Montevideo",
+    "ASU": "Asuncion",
+    "LPB": "La Paz",
+    "VVI": "Santa Cruz",
+    "CCS": "Caracas",
+    "PTY": "Panama City",
+    "SAL": "San Salvador",
+
+    "SJO": "San Jose",
+    "GUA": "Guatemala City",
+    "SAP": "San Pedro Sula",
+    "TGU": "Tegucigalpa",
+    "MGA": "Managua",
+    "KIN": "Kingston",
+    "MBJ": "Montego Bay",
+    "NAS": "Nassau",
+    "SJU": "San Juan",
+    "PUJ": "Punta Cana",
+
+    "SYD": "Sydney",
+    "MEL": "Melbourne",
+    "BNE": "Brisbane",
+    "PER": "Perth",
+    "ADL": "Adelaide",
+    "CBR": "Canberra",
+    "CNS": "Cairns",
+    "DRW": "Darwin",
+    "AKL": "Auckland",
+    "WLG": "Wellington",
+    "CHC": "Christchurch",
+    "ZQN": "Queenstown",
+    "NAN": "Nadi",
+    "PPT": "Papeete",
+    "HNL": "Honolulu",
+    "KOA": "Kailua-Kona",
+    "OGG": "Kahului",
+    "LIH": "Lihue",
+    "GUM": "Guam",
+    "SPN": "Saipan",
+    "TNR": "Antananarivo",
+
 }
