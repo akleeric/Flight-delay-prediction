@@ -6,6 +6,7 @@ load_dotenv()
 class Settings:
     MONGO_URI = os.getenv("MONGODB_URI")
     AVIATIONSTACK_API_KEY = os.getenv("AVIATIONSTACK_API_KEY")
+    AIRLABS_API_KEY = os.getenv("AIRLABS_API_KEY")
     OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
     # Bases Mongo

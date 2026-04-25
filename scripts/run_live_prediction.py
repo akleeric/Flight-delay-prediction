@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import sys
 import json
@@ -18,6 +19,8 @@ from src.collectors.prediction_collector import PredictionCollector
 API_URL = "http://127.0.0.1:8000/predict"
 
 
+# a modifier pour ajouter get_live_flights_airlabs 
+# # et à adapter collect_weather_for_flights et build_processed_features
 def run_prediction():
     collector = PredictionCollector()
 
@@ -26,7 +29,7 @@ def run_prediction():
     print(f"➡️ {len(flights)} vols récupérés")
 
     print("🌦️ Récupération des météos...")
-    weather = collector.collect_weather_for_flights(flights)
+    weather = collector.collect_weather_for_flights(flights, [])
     print(f"➡️ {len(weather)} villes météo récupérées")
 
     print("🧮 Construction des features pour la prédiction...")
