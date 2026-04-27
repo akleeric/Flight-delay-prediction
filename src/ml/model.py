@@ -13,7 +13,7 @@ def build_model():
     # Colonnes catégorielles
     # -----------------------------
     categorical_features = [
-        "airline_name",
+        "airline_iata",
         "departure_iata",
         "arrival_iata",
     ]

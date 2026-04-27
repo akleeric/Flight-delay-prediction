@@ -19,23 +19,40 @@ from src.collectors.prediction_collector import PredictionCollector
 API_URL = "http://127.0.0.1:8000/predict"
 
 
-# a modifier pour ajouter get_live_flights_airlabs 
-# # et à adapter collect_weather_for_flights et build_processed_features
 def run_prediction():
     collector = PredictionCollector()
 
-    print("✈️ Récupération des vols actifs/scheduled...")
-    flights = collector.get_live_flights()
-    print(f"➡️ {len(flights)} vols récupérés")
+    # ---------------------------------------------------------
+    # 1. Récupération des vols Aviationstack
+    # ---------------------------------------------------------
+    print("✈️ Récupération des vols Aviationstack...")
+    flights_as = collector.get_live_flights()
+    print(f"➡️ {len(flights_as)} vols AS récupérés")
 
+    # ---------------------------------------------------------
+    # 2. Récupération des vols AirLabs
+    # ---------------------------------------------------------
+    print("✈️ Récupération des vols AirLabs...")
+    flights_al = collector.get_live_flights_airlabs()
+    print(f"➡️ {len(flights_al)} vols AL récupérés")
+
+    # ---------------------------------------------------------
+    # 3. Récupération des météos (AS + AL)
+    # ---------------------------------------------------------
     print("🌦️ Récupération des météos...")
-    weather = collector.collect_weather_for_flights(flights, [])
+    weather = collector.collect_weather_for_flights(flights_as, flights_al)
     print(f"➡️ {len(weather)} villes météo récupérées")
 
+    # ---------------------------------------------------------
+    # 4. Construction des features (AS + AL)
+    # ---------------------------------------------------------
     print("🧮 Construction des features pour la prédiction...")
-    features = collector.build_processed_features(flights, weather)
+    features = collector.build_processed_features(flights_as, flights_al, weather)
     print(f"➡️ {len(features)} lignes de features générées")
 
+    # ---------------------------------------------------------
+    # 5. Appel API pour obtenir les prédictions
+    # ---------------------------------------------------------
     print("🔮 Envoi des features à l’API pour prédiction...")
 
     payload = {"flights": features}
@@ -48,6 +65,9 @@ def run_prediction():
         print(f"❌ Erreur lors de l'appel API : {e}")
         return
 
+    # ---------------------------------------------------------
+    # 6. Affichage des résultats
+    # ---------------------------------------------------------
     print("📊 Prédictions reçues :")
     for idx, pred in enumerate(predictions):
         print(f"  - Vol {idx+1}: retard estimé = {pred:.2f} minutes")
