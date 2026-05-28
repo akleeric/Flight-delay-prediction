@@ -15,7 +15,7 @@ sys.path.insert(0, PROJECT_ROOT)
 from src.collectors.prediction_collector import PredictionCollector
 
 
-API_URL = "http://127.0.0.1:8000/predict"
+API_URL = os.environ.get("API_URL", "http://127.0.0.1:8000") + "/predict"
 
 
 def run_prediction():
