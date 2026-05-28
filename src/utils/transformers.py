@@ -35,6 +35,8 @@ def build_features(flight_json, dep_weather_json, arr_weather_json):
     arr_fields = extract_weather_fields(arr_weather_json)
 
     return {
+        "flight_iata": flight_json.get("flight", {}).get("iata", ""),
+        "airline_iata": airline.get("iata", ""),
         "airline_name": airline["name"],
         "departure_iata": dep["iata"],
         "arrival_iata": arr["iata"],
