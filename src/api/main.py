@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from src.api.schemas import FlightBatchInput
 from src.api.predict import predict_batch
 import json
@@ -10,6 +11,15 @@ app = FastAPI(
     description="API pour consulter les données collectées, relancer la collecte, entraîner le modèle et prédire les retards.",
     version="2.0.0"
 )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # ---------------------------------------------------------
 # Détection automatique de la racine du projet
