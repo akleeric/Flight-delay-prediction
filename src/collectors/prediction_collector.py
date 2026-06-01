@@ -97,21 +97,31 @@ class PredictionCollector:
                     if not f.get("dep_iata") or not f.get("arr_iata"):
                         continue
                     # Normalisation au format Aviationstack
+                    def to_iso(dt_str):
+                        if not dt_str: return ""
+                        try:
+                            return dt_str.replace(" ", "T") + ":00+00:00"
+                        except:
+                            return ""
+                    dep_sched = to_iso(f.get("dep_time", ""))
+                    arr_sched = to_iso(f.get("arr_time", ""))
+                    if not dep_sched or not arr_sched:
+                        continue
                     normalized = {
                         "flight_date": today_str,
                         "flight_status": "active",
                         "departure": {
                             "iata": f.get("dep_iata"),
-                            "scheduled": f.get("dep_time", ""),
-                            "estimated": f.get("dep_estimated", ""),
-                            "actual": f.get("dep_actual", ""),
+                            "scheduled": dep_sched,
+                            "estimated": to_iso(f.get("dep_estimated", "")),
+                            "actual": to_iso(f.get("dep_actual", "")),
                             "delay": f.get("delayed"),
                         },
                         "arrival": {
                             "iata": f.get("arr_iata"),
-                            "scheduled": f.get("arr_time", ""),
-                            "estimated": f.get("arr_estimated", ""),
-                            "actual": f.get("arr_actual"),
+                            "scheduled": arr_sched,
+                            "estimated": to_iso(f.get("arr_estimated", "")),
+                            "actual": to_iso(f.get("arr_actual", "")),
                         },
                         "airline": {
                             "iata": f.get("airline_iata", ""),
