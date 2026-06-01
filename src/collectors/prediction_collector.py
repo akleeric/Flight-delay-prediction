@@ -224,20 +224,20 @@ class PredictionCollector:
 if __name__ == "__main__":
     collector = PredictionCollector()
 
-    print("✈️ Collecte Aviationstack...")
+    print("Collecte Aviationstack...")
     flights_as = collector.get_live_flights()
-    print(f"➡️ {len(flights_as)} vols AS")
+    print(f"{len(flights_as)} vols AS")
 
     print("✈️ Collecte AirLabs...")
     flights_al = collector.get_live_flights_airlabs()
-    print(f"➡️ {len(flights_al)} vols AL")
+    print(f"{len(flights_al)} vols AL")
 
-    print("🌦️ Collecte météo...")
+    print("Collecte météo...")
     weather = collector.collect_weather_for_flights(flights_as, flights_al)
-    print(f"➡️ {len(weather)} villes météo")
+    print(f"{len(weather)} villes météo")
 
-    print("🧮 Construction features...")
+    print("Construction features...")
     features = collector.build_processed_features(flights_as, flights_al, weather)
-    print(f"➡️ {len(features)} features générées")
+    print(f"{len(features)} features générées")
 
-    print("✅ Test PredictionCollector terminé.")
+    print("Test PredictionCollector terminé.")
