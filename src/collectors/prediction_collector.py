@@ -9,6 +9,7 @@ from src.utils.transformers import build_features_for_flights
 
 
 DEPARTURE_AIRPORTS = ["CDG", "ORY", "AMS", "LHR", "JFK"]
+AIRLABS_AIRPORTS = ["CDG", "AMS", "LHR", "JFK", "ATL"]
 
 
 class PredictionCollector:
@@ -64,6 +65,67 @@ class PredictionCollector:
                     flights.append(f)
 
         save_raw("flights_raw", flights)
+        return flights
+
+    # ---------------------------------------------------------
+    # 2. Récupérer vols actifs depuis AirLabs
+    # ---------------------------------------------------------
+    def get_live_flights_airlabs(self):
+        flights = []
+        today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+        MAX_FLIGHTS = 10
+        airlabs_key = settings.AIRLABS_API_KEY
+        if not airlabs_key:
+            print("Cle AirLabs absente — ignoré")
+            return []
+        for dep in AIRLABS_AIRPORTS:
+            if len(flights) >= MAX_FLIGHTS:
+                break
+            try:
+                response = requests.get(
+                    "https://airlabs.co/api/v9/flights",
+                    params={
+                        "api_key": airlabs_key,
+                        "dep_iata": dep,
+                    },
+                    timeout=15
+                )
+                raw = response.json().get("response", [])
+                for f in raw:
+                    if len(flights) >= MAX_FLIGHTS:
+                        break
+                    if not f.get("dep_iata") or not f.get("arr_iata"):
+                        continue
+                    # Normalisation au format Aviationstack
+                    normalized = {
+                        "flight_date": today_str,
+                        "flight_status": "active",
+                        "departure": {
+                            "iata": f.get("dep_iata"),
+                            "scheduled": f.get("dep_time", ""),
+                            "estimated": f.get("dep_estimated", ""),
+                            "actual": f.get("dep_actual", ""),
+                            "delay": f.get("delayed"),
+                        },
+                        "arrival": {
+                            "iata": f.get("arr_iata"),
+                            "scheduled": f.get("arr_time", ""),
+                            "estimated": f.get("arr_estimated", ""),
+                            "actual": f.get("arr_actual"),
+                        },
+                        "airline": {
+                            "iata": f.get("airline_iata", ""),
+                            "name": f.get("airline_iata", ""),
+                        },
+                        "flight": {
+                            "iata": f.get("flight_iata", ""),
+                            "number": f.get("flight_number", ""),
+                        }
+                    }
+                    flights.append(normalized)
+            except Exception as e:
+                print(f"Erreur AirLabs {dep}: {e}")
+                continue
         return flights
 
     # ---------------------------------------------------------
