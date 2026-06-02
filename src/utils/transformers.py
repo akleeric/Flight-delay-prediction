@@ -136,7 +136,7 @@ def build_features_airlabs(flight_json, dep_weather_json, arr_weather_json):
     return {
         "flight_iata": flight_json.get("flight_iata", ""),
         "airline_iata": flight_json.get("airline_iata", ""),
-        "airline_name": "UNKNOWN",  # AirLabs ne fournit pas le nom
+        "airline_name": flight_json.get("airline_iata", ""),  # AirLabs ne fournit pas le nom
 
         "departure_iata": flight_json.get("dep_iata"),
         "arrival_iata": flight_json.get("arr_iata"),
