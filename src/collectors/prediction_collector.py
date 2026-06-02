@@ -1,39 +1,58 @@
 import requests
 from datetime import datetime, timezone
 from pymongo import MongoClient
+import os
+import sys
+
+# Ajouter la racine du projet au PYTHONPATH
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, PROJECT_ROOT)
+
 from config.settings import settings
-from src.utils.storage import save_raw
-from src.utils.iata import IATA_TO_CITY
 from src.utils.storage import save_raw, save_processed
+from src.utils.iata import IATA_TO_CITY
 from src.utils.transformers import build_features_for_flights
 
 
-DEPARTURE_AIRPORTS = ["CDG", "ORY", "AMS", "LHR", "JFK"]
-AIRLABS_AIRPORTS = ["CDG", "AMS", "LHR", "JFK", "ATL"]
+# Aviationstack : 5 aéroports
+DEPARTURE_AIRPORTS_AS = ["CDG", "ORY", "AMS", "LHR", "JFK"]
+
+# AirLabs : 5 grands aéroports mondiaux
+DEPARTURE_AIRPORTS_AL = ["ATL", "PEK", "DXB", "HND", "LAX"]
+
+MAX_FLIGHTS = 10
 
 
 class PredictionCollector:
     """
     Collecteur temps réel :
-    - récupère max 10 vols actifs/scheduled du jour
+    - récupère max 10 vols actifs/scheduled du jour depuis Aviationstack
+    - récupère max 10 vols actifs/scheduled du jour depuis AirLabs
+    - déduplique les vols (même trajet réel)
     - récupère les météos des villes concernées
-    - sauvegarde 2 JSON : flights_raw.json et weather_raw.json
+    - sauvegarde 3 JSON :
+        flights_raw.json (Aviationstack)
+        airlabs_flights_raw.json (AirLabs)
+        weather_raw.json (météos)
     """
 
     def __init__(self):
         self.aviationstack_key = settings.AVIATIONSTACK_API_KEY
+        self.airlabs_key = settings.AIRLABS_API_KEY
         self.weather_key = settings.OPENWEATHER_API_KEY
         self.mongo_uri = settings.MONGO_URI
 
+        # Set global pour éviter les doublons
+        self.seen_flights = set()
+
     # ---------------------------------------------------------
-    # 1. Récupérer max 10 vols actifs/scheduled du jour
+    # 1. Vols Aviationstack
     # ---------------------------------------------------------
     def get_live_flights(self):
         flights = []
         today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
-        MAX_FLIGHTS = 10
 
-        for dep in DEPARTURE_AIRPORTS:
+        for dep in DEPARTURE_AIRPORTS_AS:
             for status in ["active", "scheduled"]:
 
                 if len(flights) >= MAX_FLIGHTS:
@@ -62,84 +81,79 @@ class PredictionCollector:
                     if f.get("flight_status") not in ["active", "scheduled"]:
                         continue
 
+                    dep_iata = f.get("departure", {}).get("iata")
+                    arr_iata = f.get("arrival", {}).get("iata")
+                    sched = f.get("departure", {}).get("scheduled")
+
+                    if not dep_iata or not arr_iata or not sched:
+                        continue
+
+                    key = (dep_iata, arr_iata, sched)
+
+                    # 🔥 Déduplication immédiate
+                    if key in self.seen_flights:
+                        continue
+
+                    self.seen_flights.add(key)
                     flights.append(f)
 
         save_raw("flights_raw", flights)
         return flights
 
     # ---------------------------------------------------------
-    # 2. Récupérer vols actifs depuis AirLabs
+    # 2. Vols AirLabs
     # ---------------------------------------------------------
     def get_live_flights_airlabs(self):
         flights = []
         today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
-        MAX_FLIGHTS = 10
-        airlabs_key = settings.AIRLABS_API_KEY
-        if not airlabs_key:
-            print("Cle AirLabs absente — ignoré")
-            return []
-        for dep in AIRLABS_AIRPORTS:
+
+        for dep in DEPARTURE_AIRPORTS_AL:
             if len(flights) >= MAX_FLIGHTS:
                 break
-            try:
-                response = requests.get(
-                    "https://airlabs.co/api/v9/flights",
-                    params={
-                        "api_key": airlabs_key,
-                        "dep_iata": dep,
-                    },
-                    timeout=15
-                )
-                raw = response.json().get("response", [])
-                for f in raw:
-                    if len(flights) >= MAX_FLIGHTS:
-                        break
-                    if not f.get("dep_iata") or not f.get("arr_iata"):
-                        continue
-                    # Normalisation au format Aviationstack
-                    def to_iso(dt_str):
-                        if not dt_str: return ""
-                        try:
-                            return dt_str.replace(" ", "T") + ":00+00:00"
-                        except:
-                            return ""
-                    dep_sched = to_iso(f.get("dep_time", ""))
-                    arr_sched = to_iso(f.get("arr_time", ""))
-                    if not dep_sched or not arr_sched:
-                        continue
-                    normalized = {
-                        "flight_date": today_str,
-                        "flight_status": "active",
-                        "departure": {
-                            "iata": f.get("dep_iata"),
-                            "scheduled": dep_sched,
-                            "estimated": to_iso(f.get("dep_estimated", "")),
-                            "actual": to_iso(f.get("dep_actual", "")),
-                            "delay": f.get("delayed"),
-                        },
-                        "arrival": {
-                            "iata": f.get("arr_iata"),
-                            "scheduled": arr_sched,
-                            "estimated": to_iso(f.get("arr_estimated", "")),
-                            "actual": to_iso(f.get("arr_actual", "")),
-                        },
-                        "airline": {
-                            "iata": f.get("airline_iata", ""),
-                            "name": f.get("airline_iata", ""),
-                        },
-                        "flight": {
-                            "iata": f.get("flight_iata", ""),
-                            "number": f.get("flight_number", ""),
-                        }
-                    }
-                    flights.append(normalized)
-            except Exception as e:
-                print(f"Erreur AirLabs {dep}: {e}")
-                continue
+
+            response = requests.get(
+                "https://airlabs.co/api/v9/schedules",
+                params={
+                    "dep_iata": dep,
+                    "api_key": self.airlabs_key
+                },
+                timeout=15
+            )
+
+            raw = response.json().get("response", [])
+
+            for f in raw:
+                if len(flights) >= MAX_FLIGHTS:
+                    break
+
+                dep_time = f.get("dep_time")
+                if not dep_time or not dep_time.startswith(today_str):
+                    continue
+
+                if f.get("status") not in ["active", "scheduled"]:
+                    continue
+
+                dep_iata = f.get("dep_iata")
+                arr_iata = f.get("arr_iata")
+                sched = f.get("dep_time_utc")
+
+                if not dep_iata or not arr_iata or not sched:
+                    continue
+
+                key = (dep_iata, arr_iata, sched)
+
+                # 🔥 Déduplication immédiate
+                if key in self.seen_flights:
+                    continue
+
+                self.seen_flights.add(key)
+                flights.append(f)
+
+        save_raw("airlabs_flights_raw", flights)
         return flights
 
     # ---------------------------------------------------------
-    # 2. Récupérer météo propre pour une ville
+    # 3. Récupérer météo propre pour une ville
     # ---------------------------------------------------------
     def fetch_weather(self, city):
         url = (
@@ -154,9 +168,8 @@ class PredictionCollector:
 
         data["_id"] = f"{city}_{timestamp}"
         data["city"] = city
-        data["collected_at"] = now.isoformat()  # FIX JSON
+        data["collected_at"] = now.isoformat()
 
-        # Sauvegarde Mongo
         client = MongoClient(self.mongo_uri)
         db = client[settings.DB_HISTORY]
         db["weather_data"].update_one({"_id": data["_id"]}, {"$set": data}, upsert=True)
@@ -165,36 +178,66 @@ class PredictionCollector:
         return data
 
     # ---------------------------------------------------------
-    # 3. Récupérer météo pour toutes les villes concernées
+    # 4. Récupérer météo pour toutes les villes (AS + AL)
     # ---------------------------------------------------------
-    def collect_weather_for_flights(self, flights):
+    def collect_weather_for_flights(self, flights_as, flights_al):
         cities = set()
 
-        for f in flights:
-            dep_iata = f.get("departure", {}).get("iata")
-            arr_iata = f.get("arrival", {}).get("iata")
+        # Aviationstack
+        for f in flights_as:
+            dep = f.get("departure", {}).get("iata")
+            arr = f.get("arrival", {}).get("iata")
 
-            if dep_iata in IATA_TO_CITY:
-                cities.add(IATA_TO_CITY[dep_iata])
-            if arr_iata in IATA_TO_CITY:
-                cities.add(IATA_TO_CITY[arr_iata])
+            if dep in IATA_TO_CITY:
+                cities.add(IATA_TO_CITY[dep])
+            if arr in IATA_TO_CITY:
+                cities.add(IATA_TO_CITY[arr])
+
+        # AirLabs
+        for f in flights_al:
+            dep = f.get("dep_iata")
+            arr = f.get("arr_iata")
+
+            if dep in IATA_TO_CITY:
+                cities.add(IATA_TO_CITY[dep])
+            if arr in IATA_TO_CITY:
+                cities.add(IATA_TO_CITY[arr])
 
         weather_list = [self.fetch_weather(city) for city in cities]
 
         save_raw("weather_raw", weather_list)
         return weather_list
+
     # ---------------------------------------------------------
-    # 4. Construire le dataset features pour la prédiction
+    # 5. Construire les features (AS + AL)
     # ---------------------------------------------------------
-    def build_processed_features(self, flights, weather_list):
-        """
-        Construit les features à partir des vols + météo
-        et les sauvegarde dans data/processed.
-        """
+    def build_processed_features(self, flights_as, flights_al, weather_list):
+        flights = flights_as + flights_al
         features = build_features_for_flights(flights, weather_list)
-
-        # Un seul JSON avec la liste de dicts
-        # ex: data/processed/prediction_features.json
         save_processed("prediction_features", features)
-
         return features
+
+
+# ---------------------------------------------------------
+# MAIN 
+# ---------------------------------------------------------
+if __name__ == "__main__":
+    collector = PredictionCollector()
+
+    print("Collecte Aviationstack...")
+    flights_as = collector.get_live_flights()
+    print(f"{len(flights_as)} vols AS")
+
+    print("Collecte AirLabs...")
+    flights_al = collector.get_live_flights_airlabs()
+    print(f"{len(flights_al)} vols AL")
+
+    print("Collecte météo...")
+    weather = collector.collect_weather_for_flights(flights_as, flights_al)
+    print(f"{len(weather)} villes météo")
+
+    print("Construction features...")
+    features = collector.build_processed_features(flights_as, flights_al, weather)
+    print(f"{len(features)} features générées")
+
+    print("PredictionCollector terminé.")

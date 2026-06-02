@@ -29,8 +29,13 @@ load_dotenv()
 AVIATIONSTACK_KEY = os.getenv("AVIATIONSTACK_API_KEY")
 MONGO_URI = os.getenv("MONGODB_URI")
 
-AIRPORTS = ['CDG', 'ORY', 'AMS', 'LHR', 'JFK']
-MAX_PER_DAY_PER_AIRPORT = 2
+AIRPORTS = [
+                "CDG", "ORY", "NCE", "LYS", "MRS",   # France (5)
+                "LHR", "LGW", "AMS", "FRA", "MUC",
+                "MAD", "BCN", "FCO", "CPH", "ZRH",
+                "VIE", "BRU", "OSL", "ARN", "DUS"
+            ]
+MAX_PER_DAY_PER_AIRPORT = 10
 
 client = MongoClient(MONGO_URI)
 db = client["flight_delay_history_db"]
@@ -112,11 +117,11 @@ def save_flights(flights):
     return saved
 
 
-def backfill_april_2026():
+def backfill_2026():
     logger.info("🚀 DÉBUT BACKFILL AVRIL 2026")
 
-    start_date = datetime(2026, 4, 1)
-    end_date = datetime(2026, 4, 30)
+    start_date = datetime(2026, 4, 23)
+    end_date = datetime(2026, 4, 25)
 
     current = start_date
     total_saved = 0
@@ -139,5 +144,5 @@ def backfill_april_2026():
 
 
 if __name__ == "__main__":
-    backfill_april_2026()
+    backfill_2026()
     client.close()

@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 
 class FlightFeatures(BaseModel):
     # Identité vol
-    airline_name: str = Field(..., description="Nom de la compagnie aérienne")
+    airline_iata: str = Field(..., description="Code IATA de la compagnie aérienne")
     departure_iata: str = Field(..., description="Code IATA de l'aéroport de départ")
     arrival_iata: str = Field(..., description="Code IATA de l'aéroport d'arrivée")
 
@@ -37,7 +37,7 @@ class FlightFeatures(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "airline_name": "Kenya Airways",
+                "airline_iata": "Kenya Airways",
                 "departure_iata": "CDG",
                 "arrival_iata": "BCN",
                 "scheduled_hour": 18,
@@ -70,7 +70,7 @@ class FlightBatchInput(BaseModel):
             "example": {
                 "flights": [
                     {
-                        "airline_name": "Kenya Airways",
+                        "airline_iata": "Kenya Airways",
                         "departure_iata": "CDG",
                         "arrival_iata": "BCN",
                         "scheduled_hour": 18,

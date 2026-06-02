@@ -1,13 +1,13 @@
 import pandas as pd
 import logging
 from src.utils.weather import find_closest_weather
-from src.utils.iata import IATA_TO_CITY   # <-- une seule source IATA
+from src.utils.iata import IATA_TO_CITY
 
 logger = logging.getLogger(__name__)
 
 # Colonnes finales utilisées pour le modèle ML
 FINAL_COLUMNS = [
-    "airline_name",
+    "airline_iata",
     "departure_iata",
     "arrival_iata",
 
@@ -92,12 +92,12 @@ def add_delay_features(df):
         lambda r: compute_delay(r.get("departure_estimated"), r.get("departure_scheduled")),
         axis=1
     )
-    df["arrival_delay_actual"] = df.apply(
-        lambda r: compute_delay(r.get("arrival_actual"), r.get("arrival_scheduled")),
-        axis=1
-    )
     df["arrival_delay_estimated"] = df.apply(
         lambda r: compute_delay(r.get("arrival_estimated"), r.get("arrival_scheduled")),
+        axis=1
+    )
+    df["arrival_delay_actual"] = df.apply(
+        lambda r: compute_delay(r.get("arrival_actual"), r.get("arrival_scheduled")),
         axis=1
     )
     df["flight_duration_scheduled"] = df.apply(
@@ -105,6 +105,7 @@ def add_delay_features(df):
         axis=1
     )
     return df
+
 
 
 # ---------------------------------------------------------
@@ -122,25 +123,11 @@ def add_time_features(df):
 # 5. Météo départ + arrivée
 # ---------------------------------------------------------
 def extract_weather_fields(weather):
-    """
-    Gère 3 formats :
-    - dict OpenWeather standard
-    - dict custom (Unknown_…)
-    - string ("clear sky")
-    Utilise weather.main au lieu de description.
-    """
-
-    # Cas 1 : aucune donnée
     if weather is None:
-        return {
-            "temperature": None,
-            "wind_speed": None,
-            "visibility": None,
-            "precipitation": None,
-            "weather_bad": None,
-        }
+        return {k: None for k in [
+            "temperature", "wind_speed", "visibility", "precipitation", "weather_bad"
+        ]}
 
-    # Cas 2 : ancien format texte ("clear sky")
     if isinstance(weather, str):
         main = weather.lower()
         bad = int(any(k in main for k in ["rain", "snow", "thunderstorm", "fog"]))
@@ -152,12 +139,10 @@ def extract_weather_fields(weather):
             "weather_bad": bad,
         }
 
-    # Cas 3 : format custom avec raw_data
     if isinstance(weather, dict) and "raw_data" in weather:
         raw = weather["raw_data"]
         main = raw.get("weather", [{}])[0].get("main", "").lower()
         bad = int(any(k in main for k in ["rain", "snow", "thunderstorm", "fog"]))
-
         return {
             "temperature": raw.get("main", {}).get("temp"),
             "wind_speed": raw.get("wind", {}).get("speed"),
@@ -166,15 +151,12 @@ def extract_weather_fields(weather):
             "weather_bad": bad,
         }
 
-    # Cas 4 : format OpenWeather standard
     if isinstance(weather, dict):
         main_section = weather.get("main", {})
         wind = weather.get("wind", {})
         visibility = weather.get("visibility")
         main = weather.get("weather", [{}])[0].get("main", "").lower()
-
         bad = int(any(k in main for k in ["rain", "snow", "thunderstorm", "fog"]))
-
         return {
             "temperature": main_section.get("temp"),
             "wind_speed": wind.get("speed"),
@@ -183,70 +165,44 @@ def extract_weather_fields(weather):
             "weather_bad": bad,
         }
 
-    # Cas inconnu
-    return {
-        "temperature": None,
-        "wind_speed": None,
-        "visibility": None,
-        "precipitation": None,
-        "weather_bad": None,
-    }
-
+    return {k: None for k in [
+        "temperature", "wind_speed", "visibility", "precipitation", "weather_bad"
+    ]}
 
 
 def add_weather_features(df):
-    # Initialisation
-    df["dep_temperature"] = None
-    df["dep_wind_speed"] = None
-    df["dep_visibility"] = None
-    df["dep_precipitation"] = None
-    df["dep_weather_bad"] = None
-
-    df["arr_temperature"] = None
-    df["arr_wind_speed"] = None
-    df["arr_visibility"] = None
-    df["arr_precipitation"] = None
-    df["arr_weather_bad"] = None
+    for col in [
+        "dep_temperature", "dep_wind_speed", "dep_visibility",
+        "dep_precipitation", "dep_weather_bad",
+        "arr_temperature", "arr_wind_speed", "arr_visibility",
+        "arr_precipitation", "arr_weather_bad"
+    ]:
+        df[col] = None
 
     for idx, row in df.iterrows():
-
-        # -----------------------------
-        # Météo départ
-        # -----------------------------
         dep_city = IATA_TO_CITY.get(row.get("departure_iata"))
         dep_dt = (
             row.get("departure_actual")
             or row.get("departure_estimated")
             or row.get("departure_scheduled")
         )
-
         dep_weather, _ = find_closest_weather(dep_city, dep_dt)
         dep_fields = extract_weather_fields(dep_weather)
 
-        df.at[idx, "dep_temperature"] = dep_fields["temperature"]
-        df.at[idx, "dep_wind_speed"] = dep_fields["wind_speed"]
-        df.at[idx, "dep_visibility"] = dep_fields["visibility"]
-        df.at[idx, "dep_precipitation"] = dep_fields["precipitation"]
-        df.at[idx, "dep_weather_bad"] = dep_fields["weather_bad"]
+        for k, v in dep_fields.items():
+            df.at[idx, f"dep_{k}"] = v
 
-        # -----------------------------
-        # Météo arrivée
-        # -----------------------------
         arr_city = IATA_TO_CITY.get(row.get("arrival_iata"))
         arr_dt = (
             row.get("arrival_actual")
             or row.get("arrival_estimated")
             or row.get("arrival_scheduled")
         )
-
         arr_weather, _ = find_closest_weather(arr_city, arr_dt)
         arr_fields = extract_weather_fields(arr_weather)
 
-        df.at[idx, "arr_temperature"] = arr_fields["temperature"]
-        df.at[idx, "arr_wind_speed"] = arr_fields["wind_speed"]
-        df.at[idx, "arr_visibility"] = arr_fields["visibility"]
-        df.at[idx, "arr_precipitation"] = arr_fields["precipitation"]
-        df.at[idx, "arr_weather_bad"] = arr_fields["weather_bad"]
+        for k, v in arr_fields.items():
+            df.at[idx, f"arr_{k}"] = v
 
     return df
 
@@ -259,16 +215,23 @@ def select_final_columns(df):
 
 
 # ---------------------------------------------------------
-# 7. Pipeline complet
+# 7. Pipeline complet pour le training
 # ---------------------------------------------------------
-def build_training_dataset(docs):
-    df = flatten_documents(docs)
+def build_training_dataset(df):
+    df = flatten_documents(df)
     df = convert_datetime_columns(df)
     df = add_delay_features(df)
     df = add_time_features(df)
     df = add_weather_features(df)
 
-    # On garde la target pour le training
+    # Normalisation airline_iata
+    df["airline_iata"] = (
+        df["airline_iata"]
+        .astype(str)
+        .str.upper()
+        .replace({"NONE": "UNK", "NAN": "UNK"})
+    )
+
     df = df.dropna(subset=["arrival_delay_actual"])
 
     X = select_final_columns(df)

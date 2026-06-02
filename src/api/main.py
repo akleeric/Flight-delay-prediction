@@ -20,6 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 # ---------------------------------------------------------
 # Détection automatique de la racine du projet
 # ---------------------------------------------------------
