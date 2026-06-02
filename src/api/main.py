@@ -47,7 +47,29 @@ def get_flights_raw():
     if os.path.exists(path_as):
         flights += json.load(open(path_as))
     if os.path.exists(path_al):
-        flights += json.load(open(path_al))
+        for f in json.load(open(path_al)):
+            flights.append({
+                "flight_date": f.get("dep_time_utc", "")[:10],
+                "flight_status": f.get("status", "active"),
+                "departure": {
+                    "iata": f.get("dep_iata"),
+                    "scheduled": f.get("dep_time_utc", "").replace(" ", "T") + ":00+00:00" if f.get("dep_time_utc") else "",
+                    "actual": f.get("dep_actual_utc", "").replace(" ", "T") + ":00+00:00" if f.get("dep_actual_utc") else None,
+                    "delay": f.get("delayed"),
+                },
+                "arrival": {
+                    "iata": f.get("arr_iata"),
+                    "scheduled": f.get("arr_time_utc", "").replace(" ", "T") + ":00+00:00" if f.get("arr_time_utc") else "",
+                },
+                "airline": {
+                    "iata": f.get("airline_iata", ""),
+                    "name": f.get("airline_iata", ""),
+                },
+                "flight": {
+                    "iata": f.get("flight_iata", ""),
+                    "number": f.get("flight_number", ""),
+                }
+            })
     if not flights:
         raise HTTPException(404, "Aucun vol disponible")
     return flights
