@@ -219,7 +219,7 @@ class PredictionCollector:
 
 
 # ---------------------------------------------------------
-# MAIN DE TEST
+# MAIN 
 # ---------------------------------------------------------
 if __name__ == "__main__":
     collector = PredictionCollector()
@@ -228,7 +228,7 @@ if __name__ == "__main__":
     flights_as = collector.get_live_flights()
     print(f"{len(flights_as)} vols AS")
 
-    print("✈️ Collecte AirLabs...")
+    print("Collecte AirLabs...")
     flights_al = collector.get_live_flights_airlabs()
     print(f"{len(flights_al)} vols AL")
 
@@ -240,4 +240,4 @@ if __name__ == "__main__":
     features = collector.build_processed_features(flights_as, flights_al, weather)
     print(f"{len(features)} features générées")
 
-    print("Test PredictionCollector terminé.")
+    print("PredictionCollector terminé.")

@@ -40,6 +40,7 @@ def build_features(flight_json, dep_weather_json, arr_weather_json):
     dep = flight_json["departure"]
     arr = flight_json["arrival"]
     airline = flight_json["airline"]
+    flight_info = flight_json.get("flight", {})
 
     scheduled_dt = datetime.fromisoformat(dep["scheduled"].replace("Z", "+00:00"))
 
@@ -57,7 +58,10 @@ def build_features(flight_json, dep_weather_json, arr_weather_json):
     arr_fields = extract_weather_fields(arr_weather_json)
 
     return {
-        "airline_iata": airline["iata"],  # modèle actuel
+        "flight_iata": flight_info.get("iata", ""),
+        "airline_iata": airline.get("iata", ""),
+        "airline_name": airline.get("name", ""),
+
         "departure_iata": dep["iata"],
         "arrival_iata": arr["iata"],
 
@@ -85,14 +89,11 @@ def build_features(flight_json, dep_weather_json, arr_weather_json):
     }
 
 
+
 # ---------------------------------------------------------
 # 2. Features AirLabs (nouvelle fonction)
 # ---------------------------------------------------------
 def build_features_airlabs(flight_json, dep_weather_json, arr_weather_json):
-    """
-    Convertit un vol AirLabs en features identiques à Aviationstack.
-    """
-    # Parsing des dates
     dep_sched = parse_airlabs_datetime(flight_json.get("dep_time_utc"))
     dep_est = parse_airlabs_datetime(flight_json.get("dep_estimated_utc"))
     dep_act = parse_airlabs_datetime(flight_json.get("dep_actual_utc"))
@@ -100,17 +101,15 @@ def build_features_airlabs(flight_json, dep_weather_json, arr_weather_json):
     arr_sched = parse_airlabs_datetime(flight_json.get("arr_time_utc"))
     arr_est = parse_airlabs_datetime(flight_json.get("arr_estimated_utc"))
 
-    # Champs temporels
     scheduled_dt = dep_sched or dep_est or dep_act
     if not scheduled_dt:
-        return None  # impossible de construire des features
+        return None
 
     scheduled_hour = scheduled_dt.hour
     day_of_week = scheduled_dt.weekday() + 1
     month = scheduled_dt.month
     is_weekend = 1 if day_of_week in [6, 7] else 0
 
-    # Délais
     departure_delay_actual = to_minutes(
         dep_act.isoformat() if dep_act else None,
         dep_sched.isoformat() if dep_sched else None
@@ -131,13 +130,13 @@ def build_features_airlabs(flight_json, dep_weather_json, arr_weather_json):
         dep_sched.isoformat() if dep_sched else None
     )
 
-    # Météo
     dep_fields = extract_weather_fields(dep_weather_json)
     arr_fields = extract_weather_fields(arr_weather_json)
 
     return {
-        # TEMPORAIRE : on met airline_iata dans airline_name
-        "airline_iata": flight_json.get("airline_iata", "UNKNOWN"),
+        "flight_iata": flight_json.get("flight_iata", ""),
+        "airline_iata": flight_json.get("airline_iata", ""),
+        "airline_name": "UNKNOWN",  # AirLabs ne fournit pas le nom
 
         "departure_iata": flight_json.get("dep_iata"),
         "arrival_iata": flight_json.get("arr_iata"),
@@ -164,6 +163,7 @@ def build_features_airlabs(flight_json, dep_weather_json, arr_weather_json):
         "arr_precipitation": arr_fields["precipitation"],
         "arr_weather_bad": arr_fields["weather_bad"],
     }
+
 
 
 # ---------------------------------------------------------

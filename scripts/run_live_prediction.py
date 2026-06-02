@@ -49,6 +49,10 @@ def run_prediction():
     # ---------------------------------------------------------
     print("Construction des features pour la prédiction...")
     features = collector.build_processed_features(flights_as, flights_al, weather)
+    # Supprimer les colonnes non utilisées par le modèle ML
+    for f in features:
+        f.pop("flight_iata", None)
+        f.pop("airline_name", None)
     print(f"{len(features)} lignes de features générées")
 
     # ---------------------------------------------------------
