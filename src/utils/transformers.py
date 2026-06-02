@@ -217,4 +217,3 @@ def build_features_for_flights(flights, weather_list):
             features.append(feat)
 
     return features
-
