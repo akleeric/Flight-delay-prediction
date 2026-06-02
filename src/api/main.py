@@ -41,10 +41,16 @@ def root():
 # ---------------------------------------------------------
 @app.get("/flights/raw")
 def get_flights_raw():
-    path = os.path.join(DATA_RAW, "flights_raw.json")
-    if not os.path.exists(path):
-        raise HTTPException(404, "flights_raw.json introuvable")
-    return json.load(open(path))
+    path_as = os.path.join(DATA_RAW, "flights_raw.json")
+    path_al = os.path.join(DATA_RAW, "airlabs_flights_raw.json")
+    flights = []
+    if os.path.exists(path_as):
+        flights += json.load(open(path_as))
+    if os.path.exists(path_al):
+        flights += json.load(open(path_al))
+    if not flights:
+        raise HTTPException(404, "Aucun vol disponible")
+    return flights
 
 
 @app.get("/weather/raw")
