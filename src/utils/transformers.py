@@ -57,10 +57,17 @@ def build_features(flight_json, dep_weather_json, arr_weather_json):
     dep_fields = extract_weather_fields(dep_weather_json)
     arr_fields = extract_weather_fields(arr_weather_json)
 
+    # Aviationstack renvoie parfois 'UNKNOWN' (ou vide) comme nom de compagnie :
+    # on tente alors de resoudre le nom via le code IATA, sinon on garde le code.
+    _as_name = airline.get("name", "")
+    if not _as_name or _as_name.strip().upper() == "UNKNOWN":
+        _as_iata = airline.get("iata", "")
+        _as_name = AIRLINE_IATA_TO_NAME.get(_as_iata, _as_iata or "UNKNOWN")
+
     return {
         "flight_iata": flight_info.get("iata", ""),
         "airline_iata": airline.get("iata", ""),
-        "airline_name": airline.get("name", ""),
+        "airline_name": _as_name,
 
         "departure_iata": dep["iata"],
         "arrival_iata": arr["iata"],
