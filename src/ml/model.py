@@ -5,7 +5,6 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import ElasticNet
 from catboost import CatBoostRegressor
-from xgboost import XGBRegressor
 
 
 MODEL_PATH = "data/models/flight_delay_model.pkl"
@@ -70,9 +69,7 @@ def build_model():
     # Modèle ML
     # -----------------------------
     # model = ElasticNet(alpha=0.1, l1_ratio=0.2, random_state=42)
-    # model = ElasticNet(alpha=0.05, l1_ratio=0.5, max_iter=5000, tol=1e-4, random_state=42)
     model = CatBoostRegressor(depth=8, learning_rate=0.05, iterations=800, loss_function="RMSE", random_state=42, verbose=False)
-    # model = XGBRegressor(n_estimators=500, learning_rate=0.05, max_depth=5, subsample=0.9, colsample_bytree=0.9, random_state=42)
 
     return Pipeline([
         ("preprocess", preprocessor),
