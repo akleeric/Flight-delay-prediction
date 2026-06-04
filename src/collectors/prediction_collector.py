@@ -66,7 +66,7 @@ class PredictionCollector:
                         "flight_status": status,
                         "limit": 50
                     },
-                    timeout=15
+                    timeout=30
                 )
 
                 raw_flights = response.json().get("data", [])
@@ -117,7 +117,7 @@ class PredictionCollector:
                     "dep_iata": dep,
                     "api_key": self.airlabs_key
                 },
-                timeout=15
+                timeout=30
             )
 
             raw = response.json().get("response", [])
@@ -161,7 +161,7 @@ class PredictionCollector:
             f"?q={city}&appid={self.weather_key}&units=metric"
         )
 
-        data = requests.get(url, timeout=10).json()
+        data = requests.get(url, timeout=20).json()
 
         now = datetime.now(timezone.utc)
         timestamp = now.strftime("%Y%m%d%H")

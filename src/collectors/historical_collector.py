@@ -74,7 +74,7 @@ class HistoricalFlightCollector:
             r = requests.get(
                 "http://api.openweathermap.org/data/2.5/weather",
                 params={"q": city, "appid": self.weather_key, "units": "metric"},
-                timeout=10
+                timeout=20
             )
 
             if r.status_code != 200:
@@ -148,7 +148,7 @@ class HistoricalFlightCollector:
                 r = requests.get(
                     "http://api.aviationstack.com/v1/flights",
                     params={'access_key': self.aviationstack_key, 'dep_iata': airport, 'limit': 100},
-                    timeout=15
+                    timeout=30
                 )
 
                 if r.status_code != 200:

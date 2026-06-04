@@ -109,28 +109,32 @@ def predict(input_data: FlightBatchInput):
 @app.post("/run/collector")
 def run_collector():
     """
-    Lance uniquement la collecte (flights_raw + weather_raw)
-    et la transformation processed.
+    Lance la collecte (flights_raw + weather_raw + processed) en arrière-plan.
+
+    La collecte enchaîne de nombreux appels API séquentiels (plusieurs minutes).
+    On la lance en tâche détachée (fire-and-forget) et on répond immédiatement,
+    afin d'éviter le timeout de la passerelle Railway (erreur 502) et de laisser
+    la collecte se terminer côté serveur.
     """
     try:
         script_path = os.path.join(PROJECT_ROOT, "scripts", "run_collectors.py")
 
-        result = subprocess.run(
+        subprocess.Popen(
             ["python", script_path],
-            capture_output=True,
-            text=True
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
 
-        if result.returncode != 0:
-            raise HTTPException(
-                500,
-                f"Erreur lors de la collecte : {result.stderr}"
-            )
-
-        return {"status": "OK", "message": "Collecte exécutée avec succès"}
+        return JSONResponse(
+            status_code=202,
+            content={
+                "status": "STARTED",
+                "message": "Collecte lancée en arrière-plan (plusieurs minutes).",
+            },
+        )
 
     except Exception as e:
-        raise HTTPException(500, f"Erreur lors de la collecte : {e}")
+        raise HTTPException(500, f"Erreur lors du lancement de la collecte : {e}")
 
 
 # ---------------------------------------------------------
