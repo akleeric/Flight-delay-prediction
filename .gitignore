@@ -56,3 +56,5 @@ Thumbs.db
 
 *.bak_*
 apply_backend_fixes.sh
+fix_collector.sh
+fix_airline_names.sh

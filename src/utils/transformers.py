@@ -1,6 +1,6 @@
 from datetime import datetime
 from src.ml.features import extract_weather_fields
-from src.utils.iata import IATA_TO_CITY
+from src.utils.iata import IATA_TO_CITY, AIRLINE_IATA_TO_NAME
 
 
 # ---------------------------------------------------------
@@ -136,7 +136,7 @@ def build_features_airlabs(flight_json, dep_weather_json, arr_weather_json):
     return {
         "flight_iata": flight_json.get("flight_iata", ""),
         "airline_iata": flight_json.get("airline_iata", ""),
-        "airline_name": flight_json.get("airline_iata", ""),  # AirLabs ne fournit pas le nom
+        "airline_name": AIRLINE_IATA_TO_NAME.get(flight_json.get("airline_iata", ""), flight_json.get("airline_iata", "")),  # AirLabs ne fournit que le code IATA -> resolution du nom
 
         "departure_iata": flight_json.get("dep_iata"),
         "arrival_iata": flight_json.get("arr_iata"),

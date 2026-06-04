@@ -1437,3 +1437,79 @@ IATA_TO_CITY = {
     "TNR": "Antananarivo",
 
 }
+
+
+# ---------------------------------------------------------------------------
+# Mapping code IATA compagnie -> nom commercial.
+# Sert à afficher un nom lisible pour les vols AirLabs (qui ne fournissent
+# que le code IATA). Repli sur le code lui-même si la compagnie est absente.
+# Codes IATA officiels (désignateurs à 2 caractères).
+# ---------------------------------------------------------------------------
+AIRLINE_IATA_TO_NAME = {
+    # --- Amérique du Nord ---
+    "AA": "American Airlines",
+    "DL": "Delta Air Lines",
+    "UA": "United Airlines",
+    "WN": "Southwest Airlines",
+    "B6": "JetBlue Airways",
+    "AS": "Alaska Airlines",
+    "NK": "Spirit Airlines",
+    "F9": "Frontier Airlines",
+    "HA": "Hawaiian Airlines",
+    "G4": "Allegiant Air",
+    "AC": "Air Canada",
+    "WS": "WestJet",
+    # --- Europe ---
+    "AF": "Air France",
+    "KL": "KLM",
+    "BA": "British Airways",
+    "LH": "Lufthansa",
+    "IB": "Iberia",
+    "LX": "Swiss",
+    "OS": "Austrian Airlines",
+    "SN": "Brussels Airlines",
+    "SK": "SAS",
+    "AY": "Finnair",
+    "TP": "TAP Air Portugal",
+    "EI": "Aer Lingus",
+    "FR": "Ryanair",
+    "U2": "easyJet",
+    "VY": "Vueling",
+    "W6": "Wizz Air",
+    "DE": "Condor",
+    "EW": "Eurowings",
+    "A3": "Aegean Airlines",
+    "LO": "LOT Polish Airlines",
+    "TK": "Turkish Airlines",
+    "VS": "Virgin Atlantic",
+    # --- Moyen-Orient ---
+    "EK": "Emirates",
+    "EY": "Etihad Airways",
+    "QR": "Qatar Airways",
+    "SV": "Saudia",
+    "GF": "Gulf Air",
+    "WY": "Oman Air",
+    "RJ": "Royal Jordanian",
+    "ME": "Middle East Airlines",
+    # --- Asie / Pacifique ---
+    "NH": "All Nippon Airways",
+    "JL": "Japan Airlines",
+    "CA": "Air China",
+    "CZ": "China Southern Airlines",
+    "MU": "China Eastern Airlines",
+    "HU": "Hainan Airlines",
+    "CX": "Cathay Pacific",
+    "SQ": "Singapore Airlines",
+    "TG": "Thai Airways",
+    "MH": "Malaysia Airlines",
+    "GA": "Garuda Indonesia",
+    "KE": "Korean Air",
+    "OZ": "Asiana Airlines",
+    "AI": "Air India",
+    "CI": "China Airlines",
+    "BR": "EVA Air",
+    "PR": "Philippine Airlines",
+    "VN": "Vietnam Airlines",
+    "QF": "Qantas",
+    "NZ": "Air New Zealand",
+}
