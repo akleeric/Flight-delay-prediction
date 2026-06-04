@@ -53,3 +53,6 @@ Thumbs.db
 
 # Snowflake
 *.session
+
+*.bak_*
+apply_backend_fixes.sh
