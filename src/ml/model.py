@@ -4,6 +4,8 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import ElasticNet
+from catboost import CatBoostRegressor
+
 
 MODEL_PATH = "data/models/flight_delay_model.pkl"
 
@@ -66,7 +68,8 @@ def build_model():
     # -----------------------------
     # Modèle ML
     # -----------------------------
-    model = ElasticNet(alpha=0.1, l1_ratio=0.2, random_state=42)
+    # model = ElasticNet(alpha=0.1, l1_ratio=0.2, random_state=42)
+    model = CatBoostRegressor(depth=8, learning_rate=0.05, iterations=800, loss_function="RMSE", random_state=42, verbose=False)
 
     return Pipeline([
         ("preprocess", preprocessor),

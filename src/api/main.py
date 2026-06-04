@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from src.api.schemas import FlightBatchInput
 from src.api.predict import predict_batch
 import json
@@ -138,27 +139,31 @@ def run_collector():
 @app.post("/run/training")
 def run_training():
     """
-    Lance l'entraînement du modèle ML.
+    Lance l'entraînement du modèle ML en arrière-plan.
+
+    Le réentraînement dure plusieurs minutes. On lance donc le script en
+    tâche détachée (fire-and-forget) et on répond immédiatement, afin
+    d'éviter le timeout de la passerelle Railway (erreur 502).
     """
     try:
         script_path = os.path.join(PROJECT_ROOT, "scripts", "run_training.py")
 
-        result = subprocess.run(
+        subprocess.Popen(
             ["python", script_path],
-            capture_output=True,
-            text=True
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
 
-        if result.returncode != 0:
-            raise HTTPException(
-                500,
-                f"Erreur lors du training : {result.stderr}"
-            )
-
-        return {"status": "OK", "message": "Training exécuté avec succès"}
+        return JSONResponse(
+            status_code=202,
+            content={
+                "status": "STARTED",
+                "message": "Entraînement lancé en arrière-plan (plusieurs minutes).",
+            },
+        )
 
     except Exception as e:
-        raise HTTPException(500, f"Erreur lors du training : {e}")
+        raise HTTPException(500, f"Erreur lors du lancement du training : {e}")
 
 # ---------------------------------------------------------
 # 6. Lancer la prédiction live (collecte + features + prédiction)
