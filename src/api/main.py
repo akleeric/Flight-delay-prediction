@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from src.api.schemas import FlightBatchInput
 from src.api.predict import predict_batch
+from src.utils.iata import AIRLINE_IATA_TO_NAME
 import json
 import subprocess
 import os
@@ -46,7 +47,13 @@ def get_flights_raw():
     path_al = os.path.join(DATA_RAW, "airlabs_flights_raw.json")
     flights = []
     if os.path.exists(path_as):
-        flights += json.load(open(path_as))
+        for f in json.load(open(path_as)):
+            _al = f.get("airline") or {}
+            _nm = (_al.get("name") or "").strip()
+            if not _nm or _nm.upper() == "UNKNOWN":
+                _al["name"] = AIRLINE_IATA_TO_NAME.get(_al.get("iata", ""), _al.get("iata", "") or "")
+                f["airline"] = _al
+            flights.append(f)
     if os.path.exists(path_al):
         for f in json.load(open(path_al)):
             flights.append({
@@ -64,7 +71,7 @@ def get_flights_raw():
                 },
                 "airline": {
                     "iata": f.get("airline_iata", ""),
-                    "name": f.get("airline_iata", ""),
+                    "name": AIRLINE_IATA_TO_NAME.get(f.get("airline_iata", ""), f.get("airline_iata", "")),
                 },
                 "flight": {
                     "iata": f.get("flight_iata", ""),
