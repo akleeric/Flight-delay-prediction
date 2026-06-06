@@ -1446,6 +1446,7 @@ IATA_TO_CITY = {
 # Codes IATA officiels (désignateurs à 2 caractères).
 # ---------------------------------------------------------------------------
 AIRLINE_IATA_TO_NAME = {
+    "8C": "Air Transport International",
     "AM": "Aeromexico",
     # --- Amérique du Nord ---
     "AA": "American Airlines",
